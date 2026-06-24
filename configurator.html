@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konfigurieren — SCS Carport</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 10L12 3L21 10V20H15V14H9V20H3V10Z" fill="#1A1A1A"/>
+        </svg>
+      </div>
+      <div class="nav-logo-text">
+        SCS Holzwerke
+        <span>Carport Konfigurator</span>
+      </div>
+    </a>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">← Startseite</a>
+  </div>
+</nav>
+
+<!-- ── Type toggle ── -->
+<div class="type-toggle-bar">
+  <div class="type-toggle-inner">
+    <span class="type-toggle-label">Carport-Typ:</span>
+    <button class="type-btn active" data-type="einzelcarport">Einzelcarport</button>
+    <button class="type-btn" data-type="doppelcarport">Doppelcarport</button>
+  </div>
+</div>
+
+<!-- ── Main layout ── -->
+<div class="config-layout">
+
+  <!-- Left: option panels -->
+  <div class="config-options">
+
+    <!-- Size -->
+    <div class="config-section">
+      <div class="config-section-title">Größe</div>
+      <div class="options-grid" id="options-size"></div>
+    </div>
+
+    <!-- Roof shape -->
+    <div class="config-section">
+      <div class="config-section-title">Dachform</div>
+      <div class="options-grid options-grid-2" id="options-roof"></div>
+    </div>
+
+    <!-- Roof covering -->
+    <div class="config-section">
+      <div class="config-section-title">Dacheindeckung</div>
+      <div class="options-grid options-grid-2" id="options-covering"></div>
+    </div>
+
+    <!-- Side cladding -->
+    <div class="config-section">
+      <div class="config-section-title">Seitenverkleidung</div>
+      <div class="options-grid" id="options-cladding"></div>
+    </div>
+
+    <!-- Add-ons -->
+    <div class="config-section">
+      <div class="config-section-title">Zubehör (optional, mehrere wählbar)</div>
+      <div class="addon-grid" id="options-addons"></div>
+    </div>
+
+  </div>
+
+  <!-- Right: sticky price sidebar -->
+  <aside class="price-sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-header-title">Ihre Konfiguration</div>
+      <div class="sidebar-type-badge" id="sidebar-type-badge">Einzelcarport</div>
+    </div>
+    <div class="sidebar-rows" id="sidebar-rows"></div>
+    <div class="sidebar-total">
+      <div class="sidebar-total-row">
+        <span class="sidebar-total-label">Gesamtpreis inkl. 19% MwSt.</span>
+      </div>
+      <div class="sidebar-total-amount" id="sidebar-total-amount"></div>
+      <div class="sidebar-total-vat">Kostenlose Lieferung · Statik-Nachweis inklusive</div>
+    </div>
+    <div class="sidebar-actions">
+      <button class="btn btn-primary" id="to-summary">
+        Zur Zusammenfassung
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div class="sidebar-note">
+      Unverbindliche Preisschätzung. Alle Preise inkl. MwSt. Endpreis nach Aufmaß und Liefergebiet.
+    </div>
+  </aside>
+
+</div>
+
+<footer>
+  <p>© 2025 SCS Holzwerke GmbH &amp; Co. KG · <a href="#">Impressum</a> · <a href="#">Datenschutz</a> · Alle Preise inkl. 19% MwSt.</p>
+</footer>
+
+<script src="configurator.js"></script>
+</body>
+</html>
