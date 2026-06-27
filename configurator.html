@@ -3,107 +3,158 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Konfigurieren — SCS Carport</title>
+  <title>Konfigurator — SCS Carport</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="config-page">
 
-<!-- ── Nav ── -->
-<nav class="nav">
-  <div class="nav-logo">
-    <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
-      <div class="nav-logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 10L12 3L21 10V20H15V14H9V20H3V10Z" fill="#1A1A1A"/>
-        </svg>
-      </div>
-      <div class="nav-logo-text">
-        SCS Holzwerke
-        <span>Carport Konfigurator</span>
-      </div>
-    </a>
+<div class="top-bar">
+  <div class="top-bar-left">
+    <div class="top-bar-item">+49 8224 / 9660-100</div>
+    <div class="top-bar-item">Mo.–Fr. 07:00–17:00 Uhr</div>
   </div>
-  <div class="nav-links">
-    <a href="index.html">← Startseite</a>
+  <div class="top-bar-right"><a href="#">Impressum</a><a href="#">Datenschutz</a></div>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 10L12 3L21 10V20H15V14H9V20H3V10Z" fill="#fff"/></svg></div>
+      <div class="nav-logo-text"><div class="nav-logo-name">SCS Holzwerke</div><div class="nav-logo-sub">Carport Konfigurator</div></div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">← Startseite</a>
+      <a href="products.html">Meistgeliebte Carports</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.getElementById('mob').classList.toggle('open')"><span></span><span></span><span></span></button>
   </div>
 </nav>
+<div class="nav-mobile" id="mob">
+  <a href="index.html">Startseite</a>
+  <a href="products.html">Meistgeliebte Carports</a>
+</div>
 
-<!-- ── Type toggle ── -->
-<div class="type-toggle-bar">
-  <div class="type-toggle-inner">
-    <span class="type-toggle-label">Carport-Typ:</span>
-    <button class="type-btn active" data-type="einzelcarport">Einzelcarport</button>
-    <button class="type-btn" data-type="doppelcarport">Doppelcarport</button>
+<!-- Progress bar -->
+<div class="config-progress">
+  <div class="config-progress-inner">
+    <div class="progress-step done"><div class="progress-dot">✓</div>Typ wählen</div>
+    <div class="progress-step active"><div class="progress-dot">2</div>Konfigurieren</div>
+    <div class="progress-step"><div class="progress-dot">3</div>Zusammenfassung</div>
+    <div class="progress-step"><div class="progress-dot">4</div>Anfrage</div>
   </div>
 </div>
 
-<!-- ── Main layout ── -->
+<!-- Type bar -->
+<div class="type-bar">
+  <div class="type-bar-inner">
+    <span class="type-label">Carport-Typ:</span>
+    <button class="type-btn active" data-type="einzelcarport">Einzelcarport</button>
+    <button class="type-btn" data-type="doppelcarport">Doppelcarport</button>
+    <div class="type-price-hint">Basispreis: <strong id="base-price-hint">4.833,84 €</strong> inkl. MwSt.</div>
+  </div>
+</div>
+
+<!-- Config layout -->
 <div class="config-layout">
 
-  <!-- Left: option panels -->
-  <div class="config-options">
+  <!-- Left: options -->
+  <div>
 
-    <!-- Size -->
+    <!-- Preview image -->
+    <div class="config-preview" id="config-preview">
+      <img id="preview-img" src="https://www.scs-holzshop.de/media/converted/catalog/product/cache/67ee89799642c567a71fc92f3699d937/e/i/einzelcarport_2.webp" alt="Carport Vorschau" onerror="this.style.display='none'">
+      <div class="config-preview-label" id="preview-label">Einzelcarport · Flachdach</div>
+    </div>
+
+    <!-- 1. Size -->
     <div class="config-section">
-      <div class="config-section-title">Größe</div>
+      <div class="config-section-head">
+        <div class="config-section-num">1</div>
+        <div class="config-section-title">Größe</div>
+        <div class="config-section-desc">Breite × Tiefe</div>
+      </div>
       <div class="options-grid" id="options-size"></div>
     </div>
 
-    <!-- Roof shape -->
+    <!-- 2. Roof -->
     <div class="config-section">
-      <div class="config-section-title">Dachform</div>
-      <div class="options-grid options-grid-2" id="options-roof"></div>
+      <div class="config-section-head">
+        <div class="config-section-num">2</div>
+        <div class="config-section-title">Dachform</div>
+        <div class="config-section-desc">Neigung & Stil</div>
+      </div>
+      <div class="options-grid options-grid-wide" id="options-roof"></div>
     </div>
 
-    <!-- Roof covering -->
+    <!-- 3. Covering -->
     <div class="config-section">
-      <div class="config-section-title">Dacheindeckung</div>
-      <div class="options-grid options-grid-2" id="options-covering"></div>
+      <div class="config-section-head">
+        <div class="config-section-num">3</div>
+        <div class="config-section-title">Dacheindeckung</div>
+        <div class="config-section-desc">Material & Optik</div>
+      </div>
+      <div class="options-grid options-grid-wide" id="options-covering"></div>
     </div>
 
-    <!-- Side cladding -->
+    <!-- 4. Cladding -->
     <div class="config-section">
-      <div class="config-section-title">Seitenverkleidung</div>
+      <div class="config-section-head">
+        <div class="config-section-num">4</div>
+        <div class="config-section-title">Seitenverkleidung</div>
+        <div class="config-section-desc">Sichtschutz</div>
+      </div>
       <div class="options-grid" id="options-cladding"></div>
     </div>
 
-    <!-- Add-ons -->
+    <!-- 5. Add-ons -->
     <div class="config-section">
-      <div class="config-section-title">Zubehör (optional, mehrere wählbar)</div>
+      <div class="config-section-head">
+        <div class="config-section-num">5</div>
+        <div class="config-section-title">Zubehör</div>
+        <div class="config-section-desc">Optional · mehrere wählbar</div>
+      </div>
       <div class="addon-grid" id="options-addons"></div>
     </div>
 
   </div>
 
-  <!-- Right: sticky price sidebar -->
+  <!-- Right: price sidebar -->
   <aside class="price-sidebar">
-    <div class="sidebar-header">
-      <div class="sidebar-header-title">Ihre Konfiguration</div>
+    <div class="sidebar-head">
+      <div class="sidebar-head-title">Ihre Konfiguration</div>
       <div class="sidebar-type-badge" id="sidebar-type-badge">Einzelcarport</div>
     </div>
     <div class="sidebar-rows" id="sidebar-rows"></div>
     <div class="sidebar-total">
-      <div class="sidebar-total-row">
-        <span class="sidebar-total-label">Gesamtpreis inkl. 19% MwSt.</span>
-      </div>
+      <div class="sidebar-total-label">Gesamtpreis inkl. 19% MwSt.</div>
       <div class="sidebar-total-amount" id="sidebar-total-amount"></div>
-      <div class="sidebar-total-vat">Kostenlose Lieferung · Statik-Nachweis inklusive</div>
+      <div class="sidebar-delta-toast" id="sidebar-delta-toast"></div>
+      <div class="sidebar-vat">Kostenlose Lieferung · Statik-Nachweis inklusive</div>
+    </div>
+    <div class="sidebar-delivery">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Lieferung ca. <span id="sidebar-delivery-date" style="margin-left:4px;font-weight:700;"></span>
     </div>
     <div class="sidebar-actions">
-      <button class="btn btn-primary" id="to-summary">
+      <button class="btn btn-primary btn-full" id="to-summary">
         Zur Zusammenfassung
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
+      <a href="products.html" class="btn btn-ghost btn-full" style="font-size:13px;">Fertige Konfigurationen ansehen</a>
     </div>
-    <div class="sidebar-note">
-      Unverbindliche Preisschätzung. Alle Preise inkl. MwSt. Endpreis nach Aufmaß und Liefergebiet.
-    </div>
+    <div class="sidebar-note">Unverbindliche Preisschätzung. Endpreis nach Aufmaß und Liefergebiet.</div>
   </aside>
 
 </div>
 
 <footer>
-  <p>© 2025 SCS Holzwerke GmbH &amp; Co. KG · <a href="#">Impressum</a> · <a href="#">Datenschutz</a> · Alle Preise inkl. 19% MwSt.</p>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="nav-logo-icon" style="width:36px;height:36px;"><svg viewBox="0 0 24 24" fill="none"><path d="M3 10L12 3L21 10V20H15V14H9V20H3V10Z" fill="#fff"/></svg></div>
+      <div class="nav-logo-text"><div class="nav-logo-name" style="color:#fff;">SCS Holzwerke</div><div class="nav-logo-sub">Carport Konfigurator</div></div>
+    </div>
+    <div class="footer-copy">© 2025 SCS Holzwerke GmbH & Co. KG · Studienprojekt TH Rosenheim</div>
+  </div>
 </footer>
 
 <script src="configurator.js"></script>
