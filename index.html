@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SCS Carport Konfigurator</title>
+  <title>SCS Carport Konfigurator — Holzcarports nach Maß</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,67 +12,70 @@
 <nav class="nav">
   <div class="nav-logo">
     <div class="nav-logo-mark">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3 10L12 3L21 10V20H15V14H9V20H3V10Z" fill="#1A1A1A"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none"><path d="M3 10L12 3L21 10V20H15V14H9V20H3V10Z" fill="#1A1A1A"/></svg>
     </div>
-    <div class="nav-logo-text">
-      SCS Holzwerke
-      <span>Carport Konfigurator</span>
-    </div>
+    <div class="nav-logo-text">SCS Holzwerke<span>Carport Konfigurator</span></div>
   </div>
   <div class="nav-links">
-    <a href="#how">So funktioniert's</a>
+    <a href="#produkte">Produkte</a>
+    <a href="#beliebt">Beliebte Konfigurationen</a>
+    <a href="#vorteile">Vorteile</a>
+    <a href="#bewertungen">Bewertungen</a>
     <a href="configurator.html" class="nav-cta">Jetzt konfigurieren</a>
   </div>
+  <button class="nav-hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="#produkte" onclick="toggleMenu()">Produkte</a>
+  <a href="#beliebt" onclick="toggleMenu()">Beliebte Konfigurationen</a>
+  <a href="#vorteile" onclick="toggleMenu()">Vorteile</a>
+  <a href="#bewertungen" onclick="toggleMenu()">Bewertungen</a>
+  <a href="configurator.html" class="btn btn-primary" style="margin-top:8px;">Jetzt konfigurieren</a>
+</div>
 
 <!-- ── Hero ── -->
 <section class="hero">
+  <div class="hero-bg-image">
+    <img src="https://www.scs-holzshop.de/media/converted/catalog/product/cache/67ee89799642c567a71fc92f3699d937/e/i/einzelcarport_2.webp" alt="SCS Carport" onerror="this.style.display='none'">
+  </div>
+  <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-content">
-      <span class="hero-tag">SCS Carport Konfigurator</span>
-      <h1 class="hero-title">
-        Ihr Carport.<br>
-        <em>Ihr Preis.</em><br>
-        Kein Rätselraten.
-      </h1>
-      <p class="hero-subtitle">
-        Konfigurieren Sie Ihren Holzcarport in wenigen Schritten und sehen Sie bei jeder Auswahl genau, wie sich der Preis verändert.
-      </p>
+      <span class="hero-tag">SCS Holzwerke — 180 Jahre Erfahrung</span>
+      <h1 class="hero-title">Ihr Carport.<br><em>Ihr Preis.</em><br>Kein Rätselraten.</h1>
+      <p class="hero-subtitle">Konfigurieren Sie Ihren Holzcarport in wenigen Schritten — und sehen Sie bei jeder Auswahl genau, wie sich der Preis verändert.</p>
       <div class="hero-actions">
-        <a href="configurator.html" class="btn btn-primary">
+        <a href="configurator.html" class="btn btn-primary btn-lg">
           Jetzt konfigurieren
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="#how" class="btn btn-outline" style="border-color: rgba(255,255,255,0.2); color: #fff;">
-          So funktioniert's
-        </a>
+        <a href="#produkte" class="btn btn-ghost btn-lg">Produkte ansehen</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="#F5C800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Kostenlose Lieferung
+        </div>
+        <div class="hero-trust-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="#F5C800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Statisch geprüft
+        </div>
+        <div class="hero-trust-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="#F5C800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Trusted Shops zertifiziert
+        </div>
       </div>
     </div>
     <div class="hero-visual">
       <div class="hero-price-preview">
-        <div class="hero-price-preview-title">Preisübersicht — Beispielkonfiguration</div>
-        <div class="hero-price-row">
-          <span class="label">Einzelcarport (Basis)</span>
-          <span class="value">4.833,84 €</span>
-        </div>
-        <div class="hero-price-row">
-          <span class="label">Größe: Groß</span>
-          <span class="delta">+890,00 €</span>
-        </div>
-        <div class="hero-price-row">
-          <span class="label">Satteldach</span>
-          <span class="delta">+380,00 €</span>
-        </div>
-        <div class="hero-price-row">
-          <span class="label">Sandwichpaneele</span>
-          <span class="delta">+640,00 €</span>
-        </div>
-        <div class="hero-price-row">
-          <span class="label">Verkleidung: 2 Seiten</span>
-          <span class="delta">+590,00 €</span>
-        </div>
+        <div class="hero-price-preview-title">Preisübersicht — Live-Kalkulation</div>
+        <div class="hero-price-row"><span class="label">Einzelcarport (Basis)</span><span class="value">4.833,84 €</span></div>
+        <div class="hero-price-row"><span class="label">Größe: Groß</span><span class="delta">+890,00 €</span></div>
+        <div class="hero-price-row"><span class="label">Satteldach</span><span class="delta">+380,00 €</span></div>
+        <div class="hero-price-row"><span class="label">Sandwichpaneele</span><span class="delta">+640,00 €</span></div>
+        <div class="hero-price-row"><span class="label">Verkleidung: 2 Seiten</span><span class="delta">+590,00 €</span></div>
         <div class="hero-price-total">
           <span class="total-label">Gesamtpreis inkl. MwSt.</span>
           <span class="total-value">7.333,84 €</span>
@@ -85,33 +88,248 @@
 <!-- ── USP Strip ── -->
 <div class="usp-strip">
   <div class="usp-strip-inner">
-    <div class="usp-item">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="#F5C800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Kostenlose Lieferung
-    </div>
-    <div class="usp-item">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="#F5C800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      180 Jahre Erfahrung
-    </div>
-    <div class="usp-item">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="#F5C800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Statisch geprüft
-    </div>
-    <div class="usp-item">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="#F5C800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Trusted Shops zertifiziert
-    </div>
-    <div class="usp-item">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="#F5C800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      100% PEFC-zertifiziertes Holz
-    </div>
+    <div class="usp-item"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="#F5C800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Kostenlose Lieferung</div>
+    <div class="usp-item"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="#F5C800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>180 Jahre Erfahrung</div>
+    <div class="usp-item"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="#F5C800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Statisch geprüft</div>
+    <div class="usp-item"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="#F5C800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Trusted Shops zertifiziert</div>
+    <div class="usp-item"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="#F5C800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>100% PEFC-zertifiziertes Holz</div>
+    <div class="usp-item"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="#F5C800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Kostenlose Fachberatung</div>
   </div>
 </div>
+
+<!-- ── Produkte ── -->
+<section class="products-section" id="produkte">
+  <div class="section-header">
+    <div class="section-eyebrow">Unsere Produkte</div>
+    <h2 class="section-title">Wählen Sie Ihren Carport-Typ</h2>
+    <p class="section-sub">Beide Varianten sind vollständig konfigurierbar — von der Dachform bis zur Seitenverkleidung.</p>
+  </div>
+  <div class="products-grid">
+
+    <div class="product-card">
+      <div class="product-card-image">
+        <img src="https://www.scs-holzshop.de/media/converted/catalog/product/cache/67ee89799642c567a71fc92f3699d937/e/i/einzelcarport_2.webp" alt="SCS Einzelcarport" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80'">
+        <div class="product-card-badge">Ab 4.833,84 €</div>
+      </div>
+      <div class="product-card-body">
+        <h3 class="product-card-title">SCS Einzelcarport</h3>
+        <p class="product-card-desc">Der klassische Holzcarport für ein Fahrzeug. Aus hochwertigem Brettschichtholz, statisch geprüft, vollständig konfigurierbar.</p>
+        <ul class="product-card-features">
+          <li>Breite: 270–475 cm wählbar</li>
+          <li>Tiefe: 500–600 cm wählbar</li>
+          <li>Dachform: Flachdach oder Satteldach</li>
+          <li>Dacheindeckung & Verkleidung frei wählbar</li>
+          <li>Statik-Nachweis inklusive</li>
+        </ul>
+        <div class="product-card-price">
+          <span class="price-label">Startpreis inkl. MwSt.</span>
+          <span class="price-value">4.833,84 €</span>
+        </div>
+        <a href="configurator.html?type=einzelcarport" class="btn btn-primary" style="width:100%;justify-content:center;">
+          Einzelcarport konfigurieren →
+        </a>
+      </div>
+    </div>
+
+    <div class="product-card product-card-featured">
+      <div class="product-card-image">
+        <img src="https://www.scs-holzshop.de/media/converted/catalog/product/cache/67ee89799642c567a71fc92f3699d937/d/o/doppelcarport_2.webp" alt="SCS Doppelcarport" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80'">
+        <div class="product-card-badge">Ab 6.357,59 €</div>
+        <div class="product-card-tag">Bestseller</div>
+      </div>
+      <div class="product-card-body">
+        <h3 class="product-card-title">SCS Doppelcarport</h3>
+        <p class="product-card-desc">Platz für zwei Fahrzeuge. Dieselbe hochwertige Konstruktion wie der Einzelcarport — mit doppelter Stellfläche.</p>
+        <ul class="product-card-features">
+          <li>Breite: 540–650 cm wählbar</li>
+          <li>Tiefe: 500–600 cm wählbar</li>
+          <li>Dachform: Flachdach oder Satteldach</li>
+          <li>Dacheindeckung & Verkleidung frei wählbar</li>
+          <li>Statik-Nachweis inklusive</li>
+        </ul>
+        <div class="product-card-price">
+          <span class="price-label">Startpreis inkl. MwSt.</span>
+          <span class="price-value">6.357,59 €</span>
+        </div>
+        <a href="configurator.html?type=doppelcarport" class="btn btn-primary" style="width:100%;justify-content:center;">
+          Doppelcarport konfigurieren →
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Beliebte Konfigurationen ── -->
+<section class="popular-section" id="beliebt">
+  <div class="section-header">
+    <div class="section-eyebrow">Kundenbeliebt</div>
+    <h2 class="section-title">Fertige Konfigurationen — direkt übernehmen</h2>
+    <p class="section-sub">Unsere meistgewählten Kombinationen — mit transparenter Preisaufstellung. Ein Klick genügt.</p>
+  </div>
+  <div class="popular-grid">
+
+    <div class="popular-card">
+      <div class="popular-card-image">
+        <img src="https://www.scs-holzshop.de/media/converted/catalog/product/cache/67ee89799642c567a71fc92f3699d937/e/i/einzelcarport_2.webp" alt="Der Klassiker" onerror="this.style.background='#2a2a2a'">
+        <div class="popular-card-overlay">
+          <span class="popular-label">⭐ Meistgewählt</span>
+        </div>
+      </div>
+      <div class="popular-card-body">
+        <h3 class="popular-card-title">Der Klassiker</h3>
+        <p class="popular-card-subtitle">Einzelcarport · Flachdach · Standard</p>
+        <div class="popular-breakdown">
+          <div class="popular-row"><span>Einzelcarport (Basis)</span><span>4.833,84 €</span></div>
+          <div class="popular-row"><span>Größe: Standard</span><span class="incl">Inklusive</span></div>
+          <div class="popular-row"><span>Flachdach</span><span class="incl">Inklusive</span></div>
+          <div class="popular-row"><span>Ohne Eindeckung</span><span class="incl">Inklusive</span></div>
+          <div class="popular-row"><span>Ohne Verkleidung</span><span class="incl">Inklusive</span></div>
+          <div class="popular-total"><span>Gesamt inkl. MwSt.</span><span>4.833,84 €</span></div>
+        </div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="selectConfig('einzelcarport','standard','flat','none','none',[])">
+          Diese Konfiguration wählen →
+        </button>
+      </div>
+    </div>
+
+    <div class="popular-card">
+      <div class="popular-card-image">
+        <img src="https://www.scs-holzshop.de/media/converted/catalog/product/cache/67ee89799642c567a71fc92f3699d937/e/i/einzelcarport_2.webp" alt="Der Komfortschutz" onerror="this.style.background='#2a2a2a'">
+        <div class="popular-card-overlay">
+          <span class="popular-label">🏆 Top-Ausstattung</span>
+        </div>
+      </div>
+      <div class="popular-card-body">
+        <h3 class="popular-card-title">Der Komfortschutz</h3>
+        <p class="popular-card-subtitle">Einzelcarport · Satteldach · Premium</p>
+        <div class="popular-breakdown">
+          <div class="popular-row"><span>Einzelcarport (Basis)</span><span>4.833,84 €</span></div>
+          <div class="popular-row"><span>Größe: Mittel</span><span>+420,00 €</span></div>
+          <div class="popular-row"><span>Satteldach</span><span>+380,00 €</span></div>
+          <div class="popular-row"><span>Sandwichpaneele</span><span>+640,00 €</span></div>
+          <div class="popular-row"><span>Verkleidung: 2 Seiten</span><span>+590,00 €</span></div>
+          <div class="popular-total"><span>Gesamt inkl. MwSt.</span><span>6.863,84 €</span></div>
+        </div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="selectConfig('einzelcarport','medium','pitched','sandwich','two',[])">
+          Diese Konfiguration wählen →
+        </button>
+      </div>
+    </div>
+
+    <div class="popular-card">
+      <div class="popular-card-image">
+        <img src="https://www.scs-holzshop.de/media/converted/catalog/product/cache/67ee89799642c567a71fc92f3699d937/d/o/doppelcarport_2.webp" alt="Der Familien-Carport" onerror="this.style.background='#2a2a2a'">
+        <div class="popular-card-overlay">
+          <span class="popular-label">👨‍👩‍👧 Für Familien</span>
+        </div>
+      </div>
+      <div class="popular-card-body">
+        <h3 class="popular-card-title">Der Familien-Carport</h3>
+        <p class="popular-card-subtitle">Doppelcarport · Flachdach · Komplett</p>
+        <div class="popular-breakdown">
+          <div class="popular-row"><span>Doppelcarport (Basis)</span><span>6.357,59 €</span></div>
+          <div class="popular-row"><span>Größe: Standard</span><span class="incl">Inklusive</span></div>
+          <div class="popular-row"><span>Flachdach</span><span class="incl">Inklusive</span></div>
+          <div class="popular-row"><span>Trapezblech anthrazit</span><span>+390,00 €</span></div>
+          <div class="popular-row"><span>Verkleidung: 1 Seite</span><span>+420,00 €</span></div>
+          <div class="popular-total"><span>Gesamt inkl. MwSt.</span><span>7.167,59 €</span></div>
+        </div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="selectConfig('doppelcarport','standard','flat','trapez','one',[])">
+          Diese Konfiguration wählen →
+        </button>
+      </div>
+    </div>
+
+    <div class="popular-card">
+      <div class="popular-card-image">
+        <img src="https://www.scs-holzshop.de/media/converted/catalog/product/cache/67ee89799642c567a71fc92f3699d937/d/o/doppelcarport_2.webp" alt="Das Rundum-Paket" onerror="this.style.background='#2a2a2a'">
+        <div class="popular-card-overlay">
+          <span class="popular-label">💎 Premium</span>
+        </div>
+      </div>
+      <div class="popular-card-body">
+        <h3 class="popular-card-title">Das Rundum-Paket</h3>
+        <p class="popular-card-subtitle">Doppelcarport · Satteldach · Maximal</p>
+        <div class="popular-breakdown">
+          <div class="popular-row"><span>Doppelcarport (Basis)</span><span>6.357,59 €</span></div>
+          <div class="popular-row"><span>Größe: Groß</span><span>+1.180,00 €</span></div>
+          <div class="popular-row"><span>Satteldach</span><span>+520,00 €</span></div>
+          <div class="popular-row"><span>Sandwichpaneele</span><span>+850,00 €</span></div>
+          <div class="popular-row"><span>Verkleidung: 3 Seiten</span><span>+1.120,00 €</span></div>
+          <div class="popular-total"><span>Gesamt inkl. MwSt.</span><span>10.027,59 €</span></div>
+        </div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="selectConfig('doppelcarport','large','pitched','sandwich','three',['led','loft'])">
+          Diese Konfiguration wählen →
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Vorteile ── -->
+<section class="benefits-section" id="vorteile">
+  <div class="benefits-inner">
+    <div class="benefits-text">
+      <div class="section-eyebrow">Warum SCS?</div>
+      <h2 class="section-title" style="text-align:left;">Holzcarports in bewährter Qualität</h2>
+      <p style="color:var(--grey-mid);font-size:16px;margin-bottom:28px;line-height:1.7;">Seit über 180 Jahren verarbeitet SCS Holzwerke nachhaltige Rohstoffe zu hochwertigen Produkten. Unsere Carports werden in Gundremmingen nach Ihrer Bestellung gefertigt und vollständig vorkonfektioniert geliefert.</p>
+      <div class="benefits-list">
+        <div class="benefit-item">
+          <div class="benefit-icon">🌲</div>
+          <div>
+            <div class="benefit-title">Brettschichtholz in Sichtqualität</div>
+            <div class="benefit-desc">4-seitig gehobelt, Kanten leicht gefast — höchste Stabiltät und Optik.</div>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">📐</div>
+          <div>
+            <div class="benefit-title">Statisch geprüft & genehmigungsfähig</div>
+            <div class="benefit-desc">Jede Konfiguration erhält einen Statik-Nachweis für das Bauamt.</div>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🚚</div>
+          <div>
+            <div class="benefit-title">Kostenlose Lieferung</div>
+            <div class="benefit-desc">Alle Teile werden vorkonfektioniert geliefert — inklusive Fundamentplan.</div>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🔧</div>
+          <div>
+            <div class="benefit-title">Einfacher Aufbau in einem Tag</div>
+            <div class="benefit-desc">Zapfen gefräst, Löcher vorgebohrt — mit Anleitung und Helfern an einem Tag fertig.</div>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">♻️</div>
+          <div>
+            <div class="benefit-title">100% PEFC-zertifiziertes Holz</div>
+            <div class="benefit-desc">Nachhaltig aus zertifizierten europäischen Wäldern.</div>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">📞</div>
+          <div>
+            <div class="benefit-title">Kostenlose Fachberatung</div>
+            <div class="benefit-desc">Mo.–Fr. 07:00–17:00 Uhr erreichbar per Telefon, WhatsApp und E-Mail.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="benefits-image">
+      <img src="https://www.scs-holzshop.de/media/converted/catalog/product/cache/67ee89799642c567a71fc92f3699d937/e/i/einzelcarport_2.webp" alt="SCS Carport Qualität" onerror="this.style.display='none'">
+    </div>
+  </div>
+</section>
 
 <!-- ── How it works ── -->
 <section class="how-section" id="how">
   <div class="section-header">
-    <div class="section-eyebrow">In 3 Schritten zum Traumcarport</div>
+    <div class="section-eyebrow">In 3 Schritten</div>
     <h2 class="section-title">So einfach geht's</h2>
     <p class="section-sub">Kein Durchklicken, kein Nachrechnen. Sie sehen jeden Preisunterschied sofort.</p>
   </div>
@@ -119,34 +337,167 @@
     <div class="step-card">
       <div class="step-number">1</div>
       <div class="step-title">Typ & Größe wählen</div>
-      <p class="step-desc">Einzelcarport oder Doppelcarport, Standard bis Großformat. Der Basispreis wird direkt angezeigt.</p>
+      <p class="step-desc">Einzelcarport oder Doppelcarport, Standard bis Großformat. Der Basispreis wird direkt angezeigt — kein Versteckspiel.</p>
     </div>
     <div class="step-card">
       <div class="step-number">2</div>
       <div class="step-title">Optionen konfigurieren</div>
-      <p class="step-desc">Dachform, Eindeckung, Seitenverkleidung und Zubehör. Jede Option zeigt den exakten Aufpreis.</p>
+      <p class="step-desc">Dachform, Eindeckung, Seitenverkleidung und Zubehör. Jede Option zeigt den exakten Aufpreis — live, sofort, transparent.</p>
     </div>
     <div class="step-card">
       <div class="step-number">3</div>
       <div class="step-title">Anfrage absenden</div>
-      <p class="step-desc">Sie sehen Ihre vollständige Preisaufstellung und senden sie direkt als unverbindliche Anfrage.</p>
+      <p class="step-desc">Sie sehen Ihre vollständige Preisaufstellung und senden sie direkt als unverbindliche Anfrage an unser Team.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Bewertungen ── -->
+<section class="reviews-section" id="bewertungen">
+  <div class="section-header">
+    <div class="section-eyebrow">Kundenstimmen</div>
+    <h2 class="section-title">Was unsere Kunden sagen</h2>
+    <div class="reviews-aggregate">
+      <div class="reviews-score">4.8</div>
+      <div>
+        <div class="reviews-stars">★★★★★</div>
+        <div class="reviews-count">Basierend auf 247 verifizierten Bewertungen</div>
+      </div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Der Konfigurator war endlich mal wirklich transparent. Ich hab jeden Aufpreis sofort gesehen und wusste genau, was mein Carport am Ende kosten wird. Keine bösen Überraschungen beim Checkout."</p>
+      <div class="review-author">
+        <div class="review-avatar">MK</div>
+        <div>
+          <div class="review-name">Michael K.</div>
+          <div class="review-detail">Einzelcarport · Satteldach · Bayern</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Aufbau hat tatsächlich einen Tag gedauert, genau wie versprochen. Alle Teile waren perfekt vorgefertigt, die Anleitung war klar. Qualität des Holzes ist hervorragend."</p>
+      <div class="review-author">
+        <div class="review-avatar">SB</div>
+        <div>
+          <div class="review-name">Sandra B.</div>
+          <div class="review-detail">Doppelcarport · Flachdach · NRW</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Fachberatung war super. Hatte eine Frage zur Statik und wurde innerhalb von 2 Stunden zurückgerufen. Carport steht jetzt seit 3 Jahren ohne Probleme."</p>
+      <div class="review-author">
+        <div class="review-avatar">TH</div>
+        <div>
+          <div class="review-name">Thomas H.</div>
+          <div class="review-detail">Einzelcarport · Flachdach · Baden-Württemberg</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★☆</div>
+      <p class="review-text">"Sehr gute Qualität und faire Preise. Der Konfigurator macht es einfach, die richtige Kombination zu finden. Lieferung war pünktlich und vollständig."</p>
+      <div class="review-author">
+        <div class="review-avatar">AW</div>
+        <div>
+          <div class="review-name">Andreas W.</div>
+          <div class="review-detail">Doppelcarport · Satteldach · Sachsen</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Ich hab vorher bei mehreren Anbietern verglichen. SCS war nicht nur preislich konkurrenzfähig, sondern auch in der Transparenz der Konfiguration mit Abstand am besten."</p>
+      <div class="review-author">
+        <div class="review-avatar">JM</div>
+        <div>
+          <div class="review-name">Julia M.</div>
+          <div class="review-detail">Einzelcarport · Satteldach · Hamburg</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Das Holz ist wirklich hochwertig. Man merkt sofort, dass das kein Billigprodukt ist. Der Carport sieht nach 2 Jahren noch genauso aus wie am ersten Tag."</p>
+      <div class="review-author">
+        <div class="review-avatar">RN</div>
+        <div>
+          <div class="review-name">Ralf N.</div>
+          <div class="review-detail">Doppelcarport · Flachdach · Brandenburg</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Contact strip ── -->
+<section class="contact-strip">
+  <div class="contact-strip-inner">
+    <div class="contact-strip-text">
+      <h3>Fragen? Wir beraten Sie gerne.</h3>
+      <p>Mo.–Fr. von 07:00–17:00 Uhr</p>
+    </div>
+    <div class="contact-strip-actions">
+      <a href="tel:+4982249660100" class="contact-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.06 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2"/></svg>
+        +49 8224 / 9660-100
+      </a>
+      <a href="https://wa.me/4982249660100" class="contact-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" stroke-width="2"/></svg>
+        WhatsApp
+      </a>
+      <a href="mailto:info@scs-holzshop.de" class="contact-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"/></svg>
+        info@scs-holzshop.de
+      </a>
     </div>
   </div>
 </section>
 
 <!-- ── CTA ── -->
 <section class="cta-section">
-  <h2>Bereit? Konfigurieren Sie jetzt.</h2>
+  <h2>Bereit? Konfigurieren Sie jetzt Ihren Traumcarport.</h2>
   <p>Transparente Preise, keine Überraschungen. Ihr Wunschcarport in weniger als 5 Minuten.</p>
-  <a href="configurator.html" class="btn btn-primary" style="font-size:16px; padding: 16px 36px;">
+  <a href="configurator.html" class="btn btn-primary btn-lg">
     Zum Konfigurator
     <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
 </section>
 
 <footer>
-  <p>© 2025 SCS Holzwerke GmbH &amp; Co. KG · <a href="#">Impressum</a> · <a href="#">Datenschutz</a> · Alle Preise inkl. 19% MwSt.</p>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="nav-logo-mark" style="width:32px;height:32px;">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 10L12 3L21 10V20H15V14H9V20H3V10Z" fill="#1A1A1A"/></svg>
+      </div>
+      <div class="nav-logo-text">SCS Holzwerke<span>Carport Konfigurator</span></div>
+    </div>
+    <p style="color:var(--grey-mid);font-size:13px;">© 2025 SCS Holzwerke GmbH & Co. KG · <a href="#">Impressum</a> · <a href="#">Datenschutz</a> · Alle Preise inkl. 19% MwSt.</p>
+    <p style="color:var(--grey-mid);font-size:12px;margin-top:8px;">Dies ist ein Studienprojekt der TH Rosenheim — kein echtes Bestellsystem.</p>
+  </div>
 </footer>
 
+<script>
+function toggleMenu() {
+  document.getElementById('nav-mobile').classList.toggle('open');
+}
+function selectConfig(type, size, roof, covering, cladding, addons) {
+  sessionStorage.setItem('scs_config', JSON.stringify({ type, size, roof, covering, cladding, addons }));
+  window.location.href = 'configurator.html';
+}
+// Pre-select type from URL param
+window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get('type');
+  if (type) {
+    sessionStorage.setItem('scs_preselect_type', type);
+  }
+});
+</script>
 </body>
 </html>
