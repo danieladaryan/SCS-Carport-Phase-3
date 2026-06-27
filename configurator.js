@@ -10,8 +10,8 @@ const PRICING = {
       large:    { label: 'Groß',      dim: '475 × 600 cm', desc: 'Für größere Fahrzeuge & SUVs',   delta: 890 },
     },
     roof: {
-      flat:    { label: 'Flachdach',  desc: '5° Neigung · klassisch & modern',       delta: 0,   img: 'https://www.scs-holzshop.de/media/converted/catalog/product/cache/67ee89799642c567a71fc92f3699d937/e/i/einzelcarport_2.webp' },
-      pitched: { label: 'Satteldach', desc: '20° Neigung · maximaler Wasserablauf',  delta: 380, img: 'https://www.scs-holzshop.de/media/converted/catalog/product/cache/67ee89799642c567a71fc92f3699d937/e/i/einzelcarport_2.webp' },
+      flat:    { label: 'Flachdach',  desc: '5° Neigung · klassisch & modern',       delta: 0,   img: 'flat.png' },
+      pitched: { label: 'Satteldach', desc: '20° Neigung · maximaler Wasserablauf',  delta: 380, img: 'pitched.png' },
     },
     covering: {
       none:     { label: 'Ohne Eindeckung',          desc: 'Dachschalung aus Profilbrettern inklusive',        delta: 0 },
@@ -40,8 +40,8 @@ const PRICING = {
       large:    { label: 'Groß',      dim: '650 × 600 cm', desc: 'SUVs, Transporter & Komfort',    delta: 1180 },
     },
     roof: {
-      flat:    { label: 'Flachdach',  desc: '5° Neigung · klassisch & modern',       delta: 0,   img: 'https://www.scs-holzshop.de/media/converted/catalog/product/cache/67ee89799642c567a71fc92f3699d937/d/o/doppelcarport_2.webp' },
-      pitched: { label: 'Satteldach', desc: '20° Neigung · maximaler Wasserablauf',  delta: 520, img: 'https://www.scs-holzshop.de/media/converted/catalog/product/cache/67ee89799642c567a71fc92f3699d937/d/o/doppelcarport_2.webp' },
+      flat:    { label: 'Flachdach',  desc: '5° Neigung · klassisch & modern',       delta: 0,   img: 'flat.png' },
+      pitched: { label: 'Satteldach', desc: '20° Neigung · maximaler Wasserablauf',  delta: 520, img: 'pitched.png' },
     },
     covering: {
       none:     { label: 'Ohne Eindeckung',          desc: 'Dachschalung aus Profilbrettern inklusive',        delta: 0 },
@@ -385,7 +385,11 @@ function renderSummary() {
       <div class="form-hint" style="margin-top:10px;">* Pflichtfelder · Ihre Daten werden nicht an Dritte weitergegeben.</div>
     </div>
 
-    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px;">
+      <button class="btn btn-primary btn-lg" onclick="window.location.href='order.html'">
+        Zur Bestellung
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
       <a href="configurator.html" class="btn btn-ghost">← Konfiguration ändern</a>
     </div>
   `;
