@@ -8,42 +8,55 @@
 </head>
 <body>
 
-<!-- ── Nav ── -->
-<nav class="nav">
-  <div class="nav-logo">
-    <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
-      <div class="nav-logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 10L12 3L21 10V20H15V14H9V20H3V10Z" fill="#1A1A1A"/>
-        </svg>
-      </div>
-      <div class="nav-logo-text">
-        SCS Holzwerke
-        <span>Carport Konfigurator</span>
-      </div>
-    </a>
+<div class="top-bar">
+  <div class="top-bar-left">
+    <div class="top-bar-item">+49 8224 / 9660-100</div>
+    <div class="top-bar-item">Mo.–Fr. 07:00–17:00 Uhr</div>
   </div>
-  <div class="nav-links">
-    <a href="configurator.html">← Zurück zum Konfigurator</a>
+  <div class="top-bar-right"><a href="#">Impressum</a><a href="#">Datenschutz</a></div>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 10L12 3L21 10V20H15V14H9V20H3V10Z" fill="#fff"/></svg></div>
+      <div class="nav-logo-text"><div class="nav-logo-name">SCS Holzwerke</div><div class="nav-logo-sub">Carport Konfigurator</div></div>
+    </a>
+    <div class="nav-links">
+      <a href="configurator.html">← Zurück zum Konfigurator</a>
+    </div>
   </div>
 </nav>
 
+<!-- Progress bar -->
+<div class="config-progress">
+  <div class="config-progress-inner">
+    <div class="progress-step done"><div class="progress-dot">✓</div>Typ wählen</div>
+    <div class="progress-step done"><div class="progress-dot">✓</div>Konfigurieren</div>
+    <div class="progress-step active"><div class="progress-dot">3</div>Zusammenfassung</div>
+    <div class="progress-step"><div class="progress-dot">4</div>Anfrage</div>
+  </div>
+</div>
+
 <div class="summary-wrap">
-  <div class="summary-header">
+  <div class="summary-head">
     <h1>Ihre Zusammenfassung</h1>
     <p>Prüfen Sie Ihre Konfiguration und senden Sie eine unverbindliche Anfrage.</p>
   </div>
+
   <div id="summary-content">
-    <!-- Rendered by JS -->
-    <p style="color: var(--grey-mid); font-size: 14px;">
-      Keine Konfiguration gefunden.
-      <a href="configurator.html" style="color: var(--black); font-weight: 600;">Jetzt konfigurieren →</a>
-    </p>
+    <p style="color:var(--grey-mid);font-size:14px;">Keine Konfiguration gefunden. <a href="configurator.html" style="color:var(--green);font-weight:600;">Jetzt konfigurieren →</a></p>
   </div>
 </div>
 
 <footer>
-  <p>© 2025 SCS Holzwerke GmbH &amp; Co. KG · <a href="#">Impressum</a> · <a href="#">Datenschutz</a> · Alle Preise inkl. 19% MwSt.</p>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="nav-logo-icon" style="width:36px;height:36px;"><svg viewBox="0 0 24 24" fill="none"><path d="M3 10L12 3L21 10V20H15V14H9V20H3V10Z" fill="#fff"/></svg></div>
+      <div class="nav-logo-text"><div class="nav-logo-name" style="color:#fff;">SCS Holzwerke</div><div class="nav-logo-sub">Carport Konfigurator</div></div>
+    </div>
+    <div class="footer-copy">© 2025 SCS Holzwerke GmbH & Co. KG · Studienprojekt TH Rosenheim</div>
+  </div>
 </footer>
 
 <script src="configurator.js"></script>
