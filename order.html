@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bestellung — SCS Carport</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-left">
+    <div class="top-bar-item">+49 8224 / 9660-100</div>
+    <div class="top-bar-item">Mo.–Fr. 07:00–17:00 Uhr</div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 10L12 3L21 10V20H15V14H9V20H3V10Z" fill="#1a1a18"/></svg></div>
+      <div class="nav-logo-text"><div class="nav-logo-name">SCS Holzwerke</div><div class="nav-logo-sub">Carport Konfigurator</div></div>
+    </a>
+    <div class="nav-links">
+      <a href="summary.html">← Zurück zur Zusammenfassung</a>
+    </div>
+  </div>
+</nav>
+
+<div class="config-progress">
+  <div class="config-progress-inner">
+    <div class="progress-step done"><div class="progress-dot">✓</div>Typ wählen</div>
+    <div class="progress-step done"><div class="progress-dot">✓</div>Konfigurieren</div>
+    <div class="progress-step done"><div class="progress-dot">✓</div>Zusammenfassung</div>
+    <div class="progress-step active"><div class="progress-dot">4</div>Bestellung</div>
+  </div>
+</div>
+
+<div class="summary-wrap">
+  <div class="summary-head">
+    <h1>Bestellung abschließen</h1>
+    <p>Geben Sie Ihre Kontakt- und Lieferdaten ein. Wir melden uns innerhalb von 24 Stunden mit einer Auftragsbestätigung.</p>
+  </div>
+
+  <!-- Order summary mini -->
+  <div id="order-summary-mini" style="margin-bottom:24px;"></div>
+
+  <!-- Contact & delivery form -->
+  <div class="inquiry-form">
+    <h3>Kontaktdaten</h3>
+    <div class="form-grid">
+      <div class="form-group">
+        <label class="form-label">Vorname <span class="req">*</span></label>
+        <input class="form-input" id="fname" type="text" placeholder="Max">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Nachname <span class="req">*</span></label>
+        <input class="form-input" id="lname" type="text" placeholder="Mustermann">
+      </div>
+      <div class="form-group">
+        <label class="form-label">E-Mail <span class="req">*</span></label>
+        <input class="form-input" id="email" type="email" placeholder="max@beispiel.de">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Telefon <span class="req">*</span></label>
+        <input class="form-input" id="phone" type="tel" placeholder="+49 ...">
+      </div>
+    </div>
+
+    <h3 style="margin-top:24px;">Lieferadresse</h3>
+    <div class="form-grid">
+      <div class="form-group full">
+        <label class="form-label">Straße & Hausnummer <span class="req">*</span></label>
+        <input class="form-input" id="street" type="text" placeholder="Musterstraße 12">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Postleitzahl <span class="req">*</span></label>
+        <input class="form-input" id="plz" type="text" maxlength="5" placeholder="80331" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Ort <span class="req">*</span></label>
+        <input class="form-input" id="city" type="text" placeholder="München">
+      </div>
+      <div class="form-group full">
+        <label class="form-label">Lieferhinweise (optional)</label>
+        <textarea class="form-textarea" id="notes" placeholder="z.B. Einfahrt links, Tor bleibt offen, bitte anrufen vor Lieferung ..."></textarea>
+      </div>
+    </div>
+
+    <h3 style="margin-top:24px;">Zahlungsart</h3>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:8px;">
+      <label style="display:flex;align-items:center;gap:12px;padding:14px 16px;border:1.5px solid var(--grey-light);border-radius:var(--radius);cursor:pointer;" id="pay-invoice">
+        <input type="radio" name="payment" value="invoice" checked style="accent-color:var(--yellow-dk);width:18px;height:18px;"> 
+        <div><div style="font-weight:600;font-size:14px;">Auf Rechnung</div><div style="font-size:12px;color:var(--grey-mid);">Zahlung nach Erhalt der Rechnung — 14 Tage Zahlungsziel</div></div>
+      </label>
+      <label style="display:flex;align-items:center;gap:12px;padding:14px 16px;border:1.5px solid var(--grey-light);border-radius:var(--radius);cursor:pointer;">
+        <input type="radio" name="payment" value="transfer" style="accent-color:var(--yellow-dk);width:18px;height:18px;">
+        <div><div style="font-weight:600;font-size:14px;">Vorkasse (Überweisung)</div><div style="font-size:12px;color:var(--grey-mid);">2% Skonto bei Zahlung innerhalb von 5 Tagen</div></div>
+      </label>
+      <label style="display:flex;align-items:center;gap:12px;padding:14px 16px;border:1.5px solid var(--grey-light);border-radius:var(--radius);cursor:pointer;">
+        <input type="radio" name="payment" value="sepa" style="accent-color:var(--yellow-dk);width:18px;height:18px;">
+        <div><div style="font-weight:600;font-size:14px;">SEPA-Lastschrift</div><div style="font-size:12px;color:var(--grey-mid);">Bequem per Bankeinzug — Mandatserteilung im nächsten Schritt</div></div>
+      </label>
+    </div>
+
+    <div style="margin-top:24px;padding:16px;background:#fffbe6;border:1px solid var(--yellow);border-radius:var(--radius);font-size:13px;color:var(--black);line-height:1.6;">
+      <strong>Hinweis:</strong> Dies ist ein unverbindlicher Bestellwunsch. Nach dem Absenden erhalten Sie eine Bestätigungs-E-Mail. Unser Team prüft die Verfügbarkeit und kontaktiert Sie innerhalb von 24 Stunden mit einem verbindlichen Angebot.
+    </div>
+
+    <button class="btn btn-primary btn-lg" style="margin-top:20px;width:100%;justify-content:center;" onclick="submitOrder()">
+      Bestellung absenden
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="form-hint" style="margin-top:10px;text-align:center;">🔒 Ihre Daten werden SSL-verschlüsselt übertragen und nicht an Dritte weitergegeben.</div>
+  </div>
+
+  <a href="summary.html" class="btn btn-ghost">← Zurück zur Zusammenfassung</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="nav-logo-icon" style="width:36px;height:36px;"><svg viewBox="0 0 24 24" fill="none"><path d="M3 10L12 3L21 10V20H15V14H9V20H3V10Z" fill="#fff"/></svg></div>
+      <div class="nav-logo-text"><div class="nav-logo-name" style="color:#fff;">SCS Holzwerke</div><div class="nav-logo-sub">Carport Konfigurator</div></div>
+    </div>
+    <div class="footer-copy">© 2025 SCS Holzwerke GmbH & Co. KG · Studienprojekt TH Rosenheim</div>
+  </div>
+</footer>
+
+<script src="configurator.js"></script>
+<script>
+function submitOrder() {
+  const fname = document.getElementById('fname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const plz = document.getElementById('plz').value.trim();
+  const street = document.getElementById('street').value.trim();
+
+  if (!fname || !email || !plz || !street) {
+    alert('Bitte füllen Sie alle Pflichtfelder aus.');
+    return;
+  }
+
+  document.querySelector('.summary-wrap').innerHTML = `
+    <div style="text-align:center;padding:80px 0;">
+      <div style="font-size:64px;margin-bottom:24px;">✅</div>
+      <h1 style="font-size:32px;font-weight:700;margin-bottom:12px;">Vielen Dank für Ihre Bestellung!</h1>
+      <p style="font-size:16px;color:var(--grey-mid);max-width:480px;margin:0 auto 32px;">Wir haben Ihren Bestellwunsch erhalten und melden uns innerhalb von <strong>24 Stunden</strong> mit einer Auftragsbestätigung an <strong>${email}</strong>.</p>
+      <div style="background:#fffbe6;border:1px solid var(--yellow);border-radius:var(--radius-lg);padding:20px 28px;display:inline-block;text-align:left;margin-bottom:32px;">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--grey-mid);margin-bottom:8px;">Ihre Bestellnummer</div>
+        <div style="font-size:24px;font-weight:800;color:var(--black);">#SCS-${Math.floor(100000 + Math.random() * 900000)}</div>
+      </div>
+      <div><a href="index.html" class="btn btn-primary">Zurück zur Startseite</a></div>
+    </div>
+  `;
+}
+
+// Show mini order summary
+document.addEventListener('DOMContentLoaded', () => {
+  const raw = sessionStorage.getItem('scs_config');
+  const el = document.getElementById('order-summary-mini');
+  if (!raw || !el) return;
+  try {
+    const s = JSON.parse(raw);
+    const p = PRICING[s.type || 'einzelcarport'];
+    let total = p.base;
+    total += (p.size[s.size]?.delta || 0);
+    total += (p.roof[s.roof]?.delta || 0);
+    total += (p.covering[s.covering]?.delta || 0);
+    total += (p.cladding[s.cladding]?.delta || 0);
+    (s.addons || []).forEach(a => { total += (p.addons[a]?.delta || 0); });
+    const fmtNum = n => new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(n);
+    el.innerHTML = `
+      <div style="background:var(--off-white);border:1px solid var(--grey-light);border-radius:var(--radius-lg);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+        <div style="font-size:14px;color:var(--grey-mid);">Ihre Konfiguration: <strong style="color:var(--black);">${p.baseLabel} · ${p.roof[s.roof]?.label || ''} · ${p.covering[s.covering]?.label || ''}</strong></div>
+        <div style="font-size:20px;font-weight:800;color:var(--black);">${fmtNum(total)} <span style="font-size:12px;font-weight:400;color:var(--grey-mid);">inkl. MwSt.</span></div>
+      </div>`;
+  } catch(e) {}
+});
+</script>
+</body>
+</html>
