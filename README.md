@@ -24,7 +24,6 @@ The platform covers four pages: a landing page, a dedicated products page with r
 **Run locally:**
 1. Unzip the archive.
 2. Open `index.html` in any modern browser (Chrome, Firefox, Safari, Edge).
-3. No build step, no server, no dependencies required.
 
 All assets are self-contained. The only external dependency is Google Fonts, loaded via CDN — the site works without it but falls back to system fonts.
 
@@ -74,25 +73,20 @@ The platform consists of 5 pages:
 ### Deviations & reasoning
 
 - **No real backend.** The order form is a UI demonstration; it does not submit data to a real backend. A real backend would require a server, a database, and GDPR-compliant data handling, which is out of scope for this academic project.
-- **Carport preview images are user-supplied photos**, not generated images. Two photos are used (flat roof and pitched roof) that switch automatically based on roof type selection. Full per-option combinatorial photos were not feasible within the project scope.
 - **Cladding material options simplified.** The real SCS configurator offers many individual facade profiles. These were consolidated into four levels (none, 1 side, 2 sides, 3 sides) with representative pricing to keep the configurator focused on price transparency rather than exhaustive product listing.
-- **Password protection via JavaScript.** GitHub Pages does not support server-side authentication on free plans. Password protection is implemented client-side using a localStorage-based overlay.
 
 ---
+## Future Work
 
+
+Integration with a real backend for order processing and email confirmation
+Google Analytics 4 with event tracking on configuration steps and summary page view
+Postcode-based delivery zone pricing (Gebiet 1 vs. Gebiet 2)
+Save and share configuration via URL parameters
+Full per-option product photography
 
 ## AI Use Declaration
 
 **Tools used:** Claude (Anthropic) for code generation and iterative development throughout Phase 3.
 
 **What it produced:** The full HTML, CSS, and JavaScript codebase was generated with Claude as part of an iterative, step-by-step process. This included the CSS design system, the configurator rendering logic, the pricing data structure, the flash animation, the delivery date calculator, the postcode checker, the order page, the products page, and the password protection system.
-
-**What I contributed and decided:**
-- All pricing data was derived from my own Phase 2 research (real SCS base prices, option delta ranges consistent with documented price ranges)
-- The UX concept — per-option price deltas, live sidebar, flash animation — comes entirely from my Phase 2 hypothesis and prototype work, not from AI suggestion
-- I reviewed and confirmed every structural and design decision before implementation, including color scheme (yellow and white only), layout approach, page structure, and feature prioritisation
-- I directed all deviations from the Phase 2 plan and identified what to add beyond the original scope (products page, order page, postcode checker, price ranges)
-- All copy is in German and was reviewed for tone and accuracy
-- I provided the carport product photos used in the configurator preview
-
-The AI functioned as a coding assistant executing a concept I had already developed. The analytical and design decisions driving the platform originate from Phases 1 and 2.
