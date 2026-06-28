@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meistgeliebte Carports — SCS Holzwerke</title>
+  <title>Konfigurator — SCS Carport</title>
   <link rel="stylesheet" href="style.css">
-<script>if(sessionStorage.getItem("scs_auth")!=="1"){window.location.href="auth.html";}</script>
+<script>if(localStorage.getItem("scs_auth")!=="1"){window.location.href="auth.html";}</script>
 </head>
-<body>
+<body class="config-page">
 
 <div class="top-bar">
   <div class="top-bar-left">
     <div class="top-bar-item">+49 8224 / 9660-100</div>
-    <div class="top-bar-item">info@scs-holzshop.de</div>
     <div class="top-bar-item">Mo.–Fr. 07:00–17:00 Uhr</div>
   </div>
   <div class="top-bar-right"><a href="#">Impressum</a><a href="#">Datenschutz</a></div>
@@ -25,10 +24,8 @@
       <div class="nav-logo-text"><div class="nav-logo-name">SCS Holzwerke</div><div class="nav-logo-sub">Carport Konfigurator</div></div>
     </a>
     <div class="nav-links">
-      <a href="index.html">Startseite</a>
-      <a href="products.html" class="active">Meistgeliebte Carports</a>
-      <a href="configurator.html">Konfigurator</a>
-      <a href="configurator.html" class="nav-cta">Jetzt konfigurieren</a>
+      <a href="index.html">← Startseite</a>
+      <a href="products.html">Meistgeliebte Carports</a>
     </div>
     <button class="nav-hamburger" onclick="document.getElementById('mob').classList.toggle('open')"><span></span><span></span><span></span></button>
   </div>
@@ -36,304 +33,119 @@
 <div class="nav-mobile" id="mob">
   <a href="index.html">Startseite</a>
   <a href="products.html">Meistgeliebte Carports</a>
-  <a href="configurator.html">Konfigurator</a>
-  <a href="configurator.html" class="btn btn-primary" style="margin-top:8px">Jetzt konfigurieren</a>
 </div>
 
-<div class="usp-bar">
-  <div class="usp-bar-inner">
-    <div class="usp-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Kostenlose Lieferung</div>
-    <div class="usp-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>180 Jahre Erfahrung</div>
-    <div class="usp-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Statisch geprüft</div>
-    <div class="usp-item"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Trusted Shops zertifiziert</div>
+<!-- Progress bar -->
+<div class="config-progress">
+  <div class="config-progress-inner">
+    <div class="progress-step done"><div class="progress-dot">✓</div>Typ wählen</div>
+    <div class="progress-step active"><div class="progress-dot">2</div>Konfigurieren</div>
+    <div class="progress-step"><div class="progress-dot">3</div>Zusammenfassung</div>
+    <div class="progress-step"><div class="progress-dot">4</div>Bestellung</div>
   </div>
 </div>
 
-<!-- Page hero -->
-<div class="page-hero">
-  <div class="page-hero-inner">
-    <div class="breadcrumb">
-      <a href="index.html">Startseite</a>
-      <span class="breadcrumb-sep">›</span>
-      <span>Meistgeliebte Carports</span>
+<!-- Type bar -->
+<div class="type-bar">
+  <div class="type-bar-inner">
+    <span class="type-label">Carport-Typ:</span>
+    <button class="type-btn active" data-type="einzelcarport">Einzelcarport</button>
+    <button class="type-btn" data-type="doppelcarport">Doppelcarport</button>
+    <div class="type-price-hint">Basispreis: <strong id="base-price-hint">4.833,84 €</strong> inkl. MwSt.</div>
+  </div>
+</div>
+
+<!-- Config layout -->
+<div class="config-layout">
+
+  <!-- Left: options -->
+  <div>
+
+    <!-- Preview image -->
+    <div class="config-preview" id="config-preview">
+      <img id="preview-img" src="flat.png" alt="Carport Vorschau">
+      <div class="config-preview-label" id="preview-label">Einzelcarport · Flachdach</div>
     </div>
-    <div class="eyebrow">Unsere Empfehlungen</div>
-    <h1>Die meistgeliebten Carports</h1>
-    <p>Fertig konfiguriert, transparent bepreist, sofort bestellbar. Echte Kundenfavoriten — mit Bewertungen von Käufern.</p>
-  </div>
-</div>
 
-<!-- Products listing -->
-<div class="products-page-grid">
-  <div class="container">
-
-    <!-- Filter sidebar -->
-    <aside class="filter-sidebar">
-      <div class="filter-title">Filter</div>
-
-      <div class="filter-group">
-        <div class="filter-group-label">Carport-Typ</div>
-        <label class="filter-option"><input type="checkbox" checked onchange="filterProducts()"> <label>Einzelcarport</label></label>
-        <label class="filter-option"><input type="checkbox" checked onchange="filterProducts()"> <label>Doppelcarport</label></label>
+    <!-- 1. Size -->
+    <div class="config-section">
+      <div class="config-section-head">
+        <div class="config-section-num">1</div>
+        <div class="config-section-title">Größe</div>
+        <div class="config-section-desc">Breite × Tiefe</div>
       </div>
-
-      <hr class="filter-divider">
-
-      <div class="filter-group">
-        <div class="filter-group-label">Dachform</div>
-        <label class="filter-option"><input type="checkbox" checked onchange="filterProducts()"> <label>Flachdach</label></label>
-        <label class="filter-option"><input type="checkbox" checked onchange="filterProducts()"> <label>Satteldach</label></label>
-      </div>
-
-      <hr class="filter-divider">
-
-      <div class="filter-group">
-        <div class="filter-group-label">Preisbereich</div>
-        <input type="range" min="4000" max="12000" value="12000" style="width:100%;accent-color:var(--green)" oninput="this.nextElementSibling.lastChild.textContent=Number(this.value).toLocaleString('de-DE')+'€'">
-        <div class="price-range-labels"><span>4.000 €</span><span>bis <strong>12.000 €</strong></span></div>
-      </div>
-
-      <hr class="filter-divider">
-
-      <a href="configurator.html" class="btn btn-primary btn-full" style="margin-top:4px">Eigene Konfiguration →</a>
-    </aside>
-
-    <!-- Listings -->
-    <div class="products-listing">
-      <div class="listing-header">
-        <div class="listing-count">6 Konfigurationen</div>
-        <div class="listing-sort">
-          Sortieren:
-          <select><option>Beliebtheit</option><option>Preis aufsteigend</option><option>Preis absteigend</option><option>Bewertung</option></select>
-        </div>
-      </div>
-
-      <!-- Card 1 -->
-      <div class="listing-card">
-        <div class="listing-card-img">
-          <img src="https://www.scs-holzshop.de/media/converted/catalog/product/cache/67ee89799642c567a71fc92f3699d937/e/i/einzelcarport_2.webp" alt="Der Klassiker" onerror="this.parentElement.innerHTML='<div class=listing-card-img-placeholder><span style=font-size:48px>🏠</span><span>Einzelcarport</span></div>'">
-          <div class="listing-card-badges">
-            <span class="badge badge-yellow">⭐ Meistgewählt</span>
-            <span class="badge badge-green">Einzelcarport</span>
-          </div>
-        </div>
-        <div class="listing-card-body">
-          <div class="listing-card-top">
-            <div class="listing-reviews">
-              <span class="listing-stars">★★★★★</span>
-              <span class="listing-review-count">4.9 · 48 Bewertungen</span>
-            </div>
-            <div class="listing-card-title">Der Klassiker</div>
-            <div class="listing-card-subtitle">Einzelcarport · Flachdach · Standardgröße</div>
-            <p class="listing-card-desc">Die beliebteste Konfiguration bei SCS. Schlicht, funktional und bewährt — der ideale Einstieg ohne Kompromisse bei der Qualität.</p>
-            <div class="config-summary">
-              <div class="config-summary-title">Konfiguration im Detail</div>
-              <div class="config-row"><span class="config-row-label">Typ</span><span class="config-row-value">Einzelcarport</span><span class="config-row-price">4.833,84 €</span></div>
-              <div class="config-row"><span class="config-row-label">Größe</span><span class="config-row-value">Standard (270×500 cm)</span><span class="config-row-price">Inklusive</span></div>
-              <div class="config-row"><span class="config-row-label">Dachform</span><span class="config-row-value">Flachdach (5° Neigung)</span><span class="config-row-price">Inklusive</span></div>
-              <div class="config-row"><span class="config-row-label">Dacheindeckung</span><span class="config-row-value">Ohne (Dachschalung)</span><span class="config-row-price">Inklusive</span></div>
-              <div class="config-row"><span class="config-row-label">Verkleidung</span><span class="config-row-value">Ohne Seitenverkleidung</span><span class="config-row-price">Inklusive</span></div>
-              <div class="config-total"><span>Gesamtpreis inkl. MwSt.</span><span>4.833,84 €</span></div>
-            </div>
-          </div>
-          <div class="listing-card-bottom">
-            <div class="listing-price-block">
-              <div class="label">Gesamtpreis inkl. MwSt.</div>
-              <div class="price">4.833,84 €</div>
-              <div class="vat">Kostenlose Lieferung inklusive</div>
-            </div>
-            <div>
-              <div class="delivery-badge"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Lieferung ca. <span class="delivery-date"></span></div>
-              <button class="btn btn-primary" style="margin-top:8px" onclick="selectConfig('einzelcarport','standard','flat','none','none',[])">Diese Konfiguration wählen →</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="listing-card-reviews listing-card">
-        <div class="mini-reviews-title">Kundenbewertungen zu dieser Konfiguration</div>
-        <div class="mini-review">
-          <div class="mini-review-header"><span class="mini-review-stars">★★★★★</span><span class="mini-review-name">Michael K.</span><span class="mini-review-date">vor 2 Wochen</span></div>
-          <div class="mini-review-text">"Genau das, was ich gesucht habe. Schlicht, stabil, gutes Preis-Leistungs-Verhältnis. Aufbau war einfacher als gedacht."</div>
-        </div>
-        <div class="mini-review">
-          <div class="mini-review-header"><span class="mini-review-stars">★★★★★</span><span class="mini-review-name">Anna F.</span><span class="mini-review-date">vor 1 Monat</span></div>
-          <div class="mini-review-text">"Holzqualität ist wirklich top. Der Konfigurator hat mir geholfen, die Kosten im Blick zu behalten — ich wusste bei jedem Klick, was es kostet."</div>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="listing-card">
-        <div class="listing-card-img">
-          <img src="https://www.scs-holzshop.de/media/converted/catalog/product/cache/67ee89799642c567a71fc92f3699d937/e/i/einzelcarport_2.webp" alt="Der Komfortschutz" onerror="this.parentElement.innerHTML='<div class=listing-card-img-placeholder><span style=font-size:48px>🏠</span><span>Einzelcarport Premium</span></div>'">
-          <div class="listing-card-badges">
-            <span class="badge badge-green">Einzelcarport</span>
-            <span class="badge badge-outline">Premium</span>
-          </div>
-        </div>
-        <div class="listing-card-body">
-          <div class="listing-card-top">
-            <div class="listing-reviews"><span class="listing-stars">★★★★★</span><span class="listing-review-count">4.8 · 31 Bewertungen</span></div>
-            <div class="listing-card-title">Der Komfortschutz</div>
-            <div class="listing-card-subtitle">Einzelcarport · Satteldach · Sandwichpaneele · Mittlere Größe</div>
-            <p class="listing-card-desc">Maximaler Wetterschutz mit dem Satteldach und hochwärmedämmenden Sandwichpaneelen. Für Kunden, die keine Abstriche beim Schutz machen wollen.</p>
-            <div class="config-summary">
-              <div class="config-summary-title">Konfiguration im Detail</div>
-              <div class="config-row"><span class="config-row-label">Typ</span><span class="config-row-value">Einzelcarport</span><span class="config-row-price">4.833,84 €</span></div>
-              <div class="config-row"><span class="config-row-label">Größe</span><span class="config-row-value">Mittel (350×550 cm)</span><span class="config-row-price">+420,00 €</span></div>
-              <div class="config-row"><span class="config-row-label">Dachform</span><span class="config-row-value">Satteldach (20° Neigung)</span><span class="config-row-price">+380,00 €</span></div>
-              <div class="config-row"><span class="config-row-label">Dacheindeckung</span><span class="config-row-value">Sandwichpaneel anthrazit</span><span class="config-row-price">+640,00 €</span></div>
-              <div class="config-row"><span class="config-row-label">Verkleidung</span><span class="config-row-value">2 Seiten</span><span class="config-row-price">+590,00 €</span></div>
-              <div class="config-total"><span>Gesamtpreis inkl. MwSt.</span><span>6.863,84 €</span></div>
-            </div>
-          </div>
-          <div class="listing-card-bottom">
-            <div class="listing-price-block">
-              <div class="label">Gesamtpreis inkl. MwSt.</div>
-              <div class="price">6.863,84 €</div>
-              <div class="vat">Kostenlose Lieferung inklusive</div>
-            </div>
-            <div>
-              <div class="delivery-badge"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Lieferung ca. <span class="delivery-date"></span></div>
-              <button class="btn btn-primary" style="margin-top:8px" onclick="selectConfig('einzelcarport','medium','pitched','sandwich','two',[])">Diese Konfiguration wählen →</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="listing-card-reviews listing-card">
-        <div class="mini-reviews-title">Kundenbewertungen zu dieser Konfiguration</div>
-        <div class="mini-review">
-          <div class="mini-review-header"><span class="mini-review-stars">★★★★★</span><span class="mini-review-name">Thomas H.</span><span class="mini-review-date">vor 3 Wochen</span></div>
-          <div class="mini-review-text">"Das Satteldach war die richtige Entscheidung — kein Wasser staut sich, und die Sandwichpaneele halten wirklich warm. Absolut empfehlenswert."</div>
-        </div>
-        <div class="mini-review">
-          <div class="mini-review-header"><span class="mini-review-stars">★★★★☆</span><span class="mini-review-name">Julia M.</span><span class="mini-review-date">vor 2 Monaten</span></div>
-          <div class="mini-review-text">"Sehr gute Qualität. Die Verkleidung an 2 Seiten war genau richtig für unsere Situation. Einen Stern Abzug wegen der Lieferzeit, die sich leicht verzögert hat."</div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="listing-card">
-        <div class="listing-card-img">
-          <img src="https://www.scs-holzshop.de/media/converted/catalog/product/cache/67ee89799642c567a71fc92f3699d937/d/o/doppelcarport_2.webp" alt="Der Familien-Carport" onerror="this.parentElement.innerHTML='<div class=listing-card-img-placeholder><span style=font-size:48px>🏠🏠</span><span>Doppelcarport</span></div>'">
-          <div class="listing-card-badges">
-            <span class="badge badge-yellow">👨‍👩‍👧 Für Familien</span>
-            <span class="badge badge-green">Doppelcarport</span>
-          </div>
-        </div>
-        <div class="listing-card-body">
-          <div class="listing-card-top">
-            <div class="listing-reviews"><span class="listing-stars">★★★★★</span><span class="listing-review-count">4.7 · 24 Bewertungen</span></div>
-            <div class="listing-card-title">Der Familien-Carport</div>
-            <div class="listing-card-subtitle">Doppelcarport · Flachdach · Trapezblech · 1 Seite verkleidet</div>
-            <p class="listing-card-desc">Platz für zwei Autos, einseitiger Sichtschutz und wetterfeste Trapezblech-Eindeckung. Die beliebteste Doppelcarport-Konfiguration bei Familien.</p>
-            <div class="config-summary">
-              <div class="config-summary-title">Konfiguration im Detail</div>
-              <div class="config-row"><span class="config-row-label">Typ</span><span class="config-row-value">Doppelcarport</span><span class="config-row-price">6.357,59 €</span></div>
-              <div class="config-row"><span class="config-row-label">Größe</span><span class="config-row-value">Standard (540×500 cm)</span><span class="config-row-price">Inklusive</span></div>
-              <div class="config-row"><span class="config-row-label">Dachform</span><span class="config-row-value">Flachdach (5° Neigung)</span><span class="config-row-price">Inklusive</span></div>
-              <div class="config-row"><span class="config-row-label">Dacheindeckung</span><span class="config-row-value">Trapezblech anthrazit</span><span class="config-row-price">+390,00 €</span></div>
-              <div class="config-row"><span class="config-row-label">Verkleidung</span><span class="config-row-value">1 Seite</span><span class="config-row-price">+420,00 €</span></div>
-              <div class="config-total"><span>Gesamtpreis inkl. MwSt.</span><span>7.167,59 €</span></div>
-            </div>
-          </div>
-          <div class="listing-card-bottom">
-            <div class="listing-price-block">
-              <div class="label">Gesamtpreis inkl. MwSt.</div>
-              <div class="price">7.167,59 €</div>
-              <div class="vat">Kostenlose Lieferung inklusive</div>
-            </div>
-            <div>
-              <div class="delivery-badge"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Lieferung ca. <span class="delivery-date"></span></div>
-              <button class="btn btn-primary" style="margin-top:8px" onclick="selectConfig('doppelcarport','standard','flat','trapez','one',[])">Diese Konfiguration wählen →</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="listing-card-reviews listing-card">
-        <div class="mini-reviews-title">Kundenbewertungen zu dieser Konfiguration</div>
-        <div class="mini-review">
-          <div class="mini-review-header"><span class="mini-review-stars">★★★★★</span><span class="mini-review-name">Sandra B.</span><span class="mini-review-date">vor 1 Monat</span></div>
-          <div class="mini-review-text">"Perfekt für zwei Autos. Das Trapezblech sieht super aus und ist pflegeleicht. Die einseitige Verkleidung gibt genau den richtigen Sichtschutz zur Straße."</div>
-        </div>
-        <div class="mini-review">
-          <div class="mini-review-header"><span class="mini-review-stars">★★★★★</span><span class="mini-review-name">Klaus W.</span><span class="mini-review-date">vor 6 Wochen</span></div>
-          <div class="mini-review-text">"Sehr solide Konstruktion. Mein Nachbar hat auch einen SCS Carport und der steht schon 5 Jahre einwandfrei. Daran hat man sich orientiert."</div>
-        </div>
-      </div>
-
-      <!-- Card 4: Premium Doppelcarport -->
-      <div class="listing-card">
-        <div class="listing-card-img">
-          <img src="https://www.scs-holzshop.de/media/converted/catalog/product/cache/67ee89799642c567a71fc92f3699d937/d/o/doppelcarport_2.webp" alt="Das Rundum-Paket" onerror="this.parentElement.innerHTML='<div class=listing-card-img-placeholder><span style=font-size:48px>🏠🏠</span><span>Premium Doppelcarport</span></div>'">
-          <div class="listing-card-badges">
-            <span class="badge badge-yellow">💎 Premium</span>
-            <span class="badge badge-green">Doppelcarport</span>
-          </div>
-        </div>
-        <div class="listing-card-body">
-          <div class="listing-card-top">
-            <div class="listing-reviews"><span class="listing-stars">★★★★★</span><span class="listing-review-count">4.9 · 18 Bewertungen</span></div>
-            <div class="listing-card-title">Das Rundum-Paket</div>
-            <div class="listing-card-subtitle">Doppelcarport · Satteldach · Sandwichpaneele · 3 Seiten · Groß</div>
-            <p class="listing-card-desc">Die Königsklasse unter den Carports. Maximale Größe, Satteldach, vollständige Verkleidung an drei Seiten und hochwertige Sandwichpaneele für perfekten Schutz.</p>
-            <div class="config-summary">
-              <div class="config-summary-title">Konfiguration im Detail</div>
-              <div class="config-row"><span class="config-row-label">Typ</span><span class="config-row-value">Doppelcarport</span><span class="config-row-price">6.357,59 €</span></div>
-              <div class="config-row"><span class="config-row-label">Größe</span><span class="config-row-value">Groß (650×600 cm)</span><span class="config-row-price">+1.180,00 €</span></div>
-              <div class="config-row"><span class="config-row-label">Dachform</span><span class="config-row-value">Satteldach (20° Neigung)</span><span class="config-row-price">+520,00 €</span></div>
-              <div class="config-row"><span class="config-row-label">Dacheindeckung</span><span class="config-row-value">Sandwichpaneel anthrazit</span><span class="config-row-price">+850,00 €</span></div>
-              <div class="config-row"><span class="config-row-label">Verkleidung</span><span class="config-row-value">3 Seiten</span><span class="config-row-price">+1.120,00 €</span></div>
-              <div class="config-row"><span class="config-row-label">Zubehör</span><span class="config-row-value">LED-Beleuchtung + Abstellboden</span><span class="config-row-price">+788,00 €</span></div>
-              <div class="config-total"><span>Gesamtpreis inkl. MwSt.</span><span>10.815,59 €</span></div>
-            </div>
-          </div>
-          <div class="listing-card-bottom">
-            <div class="listing-price-block">
-              <div class="label">Gesamtpreis inkl. MwSt.</div>
-              <div class="price">10.815,59 €</div>
-              <div class="vat">Kostenlose Lieferung inklusive</div>
-            </div>
-            <div>
-              <div class="delivery-badge"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Lieferung ca. <span class="delivery-date"></span></div>
-              <button class="btn btn-primary" style="margin-top:8px" onclick="selectConfig('doppelcarport','large','pitched','sandwich','three',['led','loft'])">Diese Konfiguration wählen →</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="listing-card-reviews listing-card">
-        <div class="mini-reviews-title">Kundenbewertungen zu dieser Konfiguration</div>
-        <div class="mini-review">
-          <div class="mini-review-header"><span class="mini-review-stars">★★★★★</span><span class="mini-review-name">Ralf N.</span><span class="mini-review-date">vor 2 Monaten</span></div>
-          <div class="mini-review-text">"Das ist kein Carport mehr, das ist eine kleine Garage. Drei Seiten verkleidet, Sandwichpaneele — im Winter ist es da drinnen deutlich wärmer als draußen."</div>
-        </div>
-        <div class="mini-review">
-          <div class="mini-review-header"><span class="mini-review-stars">★★★★★</span><span class="mini-review-name">Petra M.</span><span class="mini-review-date">vor 3 Monaten</span></div>
-          <div class="mini-review-text">"Teuer, aber jeden Cent wert. Die LED-Beleuchtung war die beste Entscheidung — abends sieht der Carport fantastisch aus."</div>
-        </div>
-      </div>
-
+      <div class="options-grid" id="options-size"></div>
     </div>
-  </div>
-</div>
 
-<!-- CTA -->
-<section class="cta-section">
-  <div class="container">
-    <h2>Nichts Passendes gefunden?</h2>
-    <p>Konfigurieren Sie Ihren eigenen Carport — mit jeder Option transparent bepreist.</p>
-    <a href="configurator.html" class="btn btn-primary btn-lg">Eigene Konfiguration starten →</a>
-  </div>
-</section>
-
-<div class="contact-strip">
-  <div class="contact-strip-inner">
-    <div><h3>Beratung gewünscht?</h3><p>Mo.–Fr. 07:00–17:00 Uhr — kostenlos und unverbindlich</p></div>
-    <div class="contact-btns">
-      <a href="tel:+4982249660100" class="contact-btn">📞 +49 8224 / 9660-100</a>
-      <a href="https://wa.me/4982249660100" class="contact-btn">💬 WhatsApp</a>
-      <a href="mailto:info@scs-holzshop.de" class="contact-btn">✉️ E-Mail</a>
+    <!-- 2. Roof -->
+    <div class="config-section">
+      <div class="config-section-head">
+        <div class="config-section-num">2</div>
+        <div class="config-section-title">Dachform</div>
+        <div class="config-section-desc">Neigung & Stil</div>
+      </div>
+      <div class="options-grid options-grid-wide" id="options-roof"></div>
     </div>
+
+    <!-- 3. Covering -->
+    <div class="config-section">
+      <div class="config-section-head">
+        <div class="config-section-num">3</div>
+        <div class="config-section-title">Dacheindeckung</div>
+        <div class="config-section-desc">Material & Optik</div>
+      </div>
+      <div class="options-grid options-grid-wide" id="options-covering"></div>
+    </div>
+
+    <!-- 4. Cladding -->
+    <div class="config-section">
+      <div class="config-section-head">
+        <div class="config-section-num">4</div>
+        <div class="config-section-title">Seitenverkleidung</div>
+        <div class="config-section-desc">Sichtschutz</div>
+      </div>
+      <div class="options-grid" id="options-cladding"></div>
+    </div>
+
+    <!-- 5. Add-ons -->
+    <div class="config-section">
+      <div class="config-section-head">
+        <div class="config-section-num">5</div>
+        <div class="config-section-title">Zubehör</div>
+        <div class="config-section-desc">Optional · mehrere wählbar</div>
+      </div>
+      <div class="addon-grid" id="options-addons"></div>
+    </div>
+
   </div>
+
+  <!-- Right: price sidebar -->
+  <aside class="price-sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-head-title">Ihre Konfiguration</div>
+      <div class="sidebar-type-badge" id="sidebar-type-badge">Einzelcarport</div>
+    </div>
+    <div class="sidebar-rows" id="sidebar-rows"></div>
+    <div class="sidebar-total">
+      <div class="sidebar-total-label">Gesamtpreis inkl. 19% MwSt.</div>
+      <div class="sidebar-total-amount" id="sidebar-total-amount"></div>
+      <div class="sidebar-delta-toast" id="sidebar-delta-toast"></div>
+      <div class="sidebar-vat">Kostenlose Lieferung · Statik-Nachweis inklusive</div>
+    </div>
+    <div class="sidebar-delivery">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Lieferung ca. <span id="sidebar-delivery-date" style="margin-left:4px;font-weight:700;"></span>
+    </div>
+    <div class="sidebar-actions">
+      <button class="btn btn-primary btn-full" id="to-summary">
+        Zur Zusammenfassung
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <a href="products.html" class="btn btn-ghost btn-full" style="font-size:13px;">Fertige Konfigurationen ansehen</a>
+    </div>
+    <div class="sidebar-note">Unverbindliche Preisschätzung. Endpreis nach Aufmaß und Liefergebiet.</div>
+  </aside>
+
 </div>
 
 <footer>
@@ -342,23 +154,10 @@
       <div class="nav-logo-icon" style="width:36px;height:36px;"><svg viewBox="0 0 24 24" fill="none"><path d="M3 10L12 3L21 10V20H15V14H9V20H3V10Z" fill="#fff"/></svg></div>
       <div class="nav-logo-text"><div class="nav-logo-name" style="color:#fff;">SCS Holzwerke</div><div class="nav-logo-sub">Carport Konfigurator</div></div>
     </div>
-    <div class="footer-links"><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#">Kontakt</a></div>
     <div class="footer-copy">© 2025 SCS Holzwerke GmbH & Co. KG · Studienprojekt TH Rosenheim</div>
   </div>
 </footer>
 
-<script>
-function deliveryDate() {
-  const d = new Date();
-  d.setDate(d.getDate() + 28);
-  return d.toLocaleDateString('de-DE', { day:'numeric', month:'long', year:'numeric' });
-}
-document.querySelectorAll('.delivery-date').forEach(el => el.textContent = deliveryDate());
-
-function selectConfig(type, size, roof, covering, cladding, addons) {
-  sessionStorage.setItem('scs_config', JSON.stringify({ type, size, roof, covering, cladding, addons }));
-  window.location.href = 'configurator.html';
-}
-</script>
+<script src="configurator.js"></script>
 </body>
 </html>
