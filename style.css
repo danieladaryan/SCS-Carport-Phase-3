@@ -268,7 +268,7 @@ ul { list-style: none; }
 .spec-tag { background: var(--off-white); border: 1px solid var(--grey-light); border-radius: 4px; font-size: 12px; color: var(--grey-dark); padding: 3px 10px; font-weight: 500; }
 .prod-card-price-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-top: 1px solid var(--grey-light); border-bottom: 1px solid var(--grey-light); margin-bottom: 16px; }
 .prod-card-price-label { font-size: 12px; color: var(--grey-mid); }
-.prod-card-price { font-size: 26px; font-weight: 800; color: var(--black); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.prod-card-price { font-size: 20px; font-weight: 800; color: var(--black); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
 .prod-card-delivery { font-size: 12px; color: var(--price-green); font-weight: 600; display: flex; align-items: center; gap: 5px; margin-bottom: 16px; }
 
 /* ── How it works ─────────────────────────────────────────────────────────── */
