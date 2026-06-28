@@ -346,18 +346,5 @@
   </div>
 </footer>
 
-<script>
-function deliveryDate() {
-  const d = new Date();
-  d.setDate(d.getDate() + 28);
-  return d.toLocaleDateString('de-DE', { day:'numeric', month:'long', year:'numeric' });
-}
-document.querySelectorAll('.delivery-date').forEach(el => el.textContent = deliveryDate());
-
-function selectConfig(type, size, roof, covering, cladding, addons) {
-  sessionStorage.setItem('scs_config', JSON.stringify({ type, size, roof, covering, cladding, addons }));
-  window.location.href = 'configurator.html';
-}
-</script>
 </body>
 </html>
