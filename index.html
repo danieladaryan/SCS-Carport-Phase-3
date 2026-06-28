@@ -306,5 +306,40 @@
   </div>
 </footer>
 
+
+<div id='pw-wall' style='display:none;position:fixed;inset:0;background:#F8F8F6;z-index:99999;align-items:center;justify-content:center;font-family:system-ui,sans-serif;'>
+  <div style='background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.12);padding:48px 40px;width:360px;text-align:center;'>
+    <div style='width:52px;height:52px;background:#F5C800;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:16px;'>&#127968;</div>
+    <h2 style='font-size:20px;font-weight:700;color:#1A1A18;margin:0 0 6px;'>SCS Carport Konfigurator</h2>
+    <p style='font-size:13px;color:#7A7670;margin:0 0 24px;'>Please enter the password to continue.</p>
+    <input id='pw-inp' type='password' placeholder='Password' style='width:100%;border:1.5px solid #E4E1DB;border-radius:8px;padding:11px 14px;font-size:15px;text-align:center;outline:none;margin-bottom:12px;box-sizing:border-box;'>
+    <button id='pw-btn' style='width:100%;background:#F5C800;color:#1A1A18;border:none;border-radius:8px;padding:12px;font-size:15px;font-weight:700;cursor:pointer;'>Continue &#8594;</button>
+    <div id='pw-err' style='color:#c0392b;font-size:12px;margin-top:10px;display:none;'>Incorrect password. Please try again.</div>
+  </div>
+</div>
+<script>
+window.addEventListener('load', function() {
+  if (localStorage.getItem('scs_pass') !== 'ok') {
+    var wall = document.getElementById('pw-wall');
+    wall.style.display = 'flex';
+    var inp = document.getElementById('pw-inp');
+    var btn = document.getElementById('pw-btn');
+    var err = document.getElementById('pw-err');
+    inp.focus();
+    function check() {
+      if (inp.value === 'builditphase3') {
+        localStorage.setItem('scs_pass', 'ok');
+        wall.style.display = 'none';
+      } else {
+        err.style.display = 'block';
+        inp.value = '';
+        inp.focus();
+      }
+    }
+    btn.addEventListener('click', check);
+    inp.addEventListener('keydown', function(e) { if (e.key === 'Enter') check(); });
+  }
+});
+</script>
 </body>
 </html>
