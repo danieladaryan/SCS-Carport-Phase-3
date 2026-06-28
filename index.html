@@ -292,6 +292,16 @@
   </div>
 </div>
 
+<script>
+(function() {
+  var d = new Date();
+  d.setDate(d.getDate() + 28);
+  var date = d.toLocaleDateString('de-DE', { day:'numeric', month:'long', year:'numeric' });
+  var els = document.querySelectorAll('#delivery-einzelcarport, #delivery-doppelcarport');
+  els.forEach(function(el) { el.textContent = date; });
+})();
+</script>
+
 <!-- Footer -->
 <footer>
   <div class="footer-inner">
