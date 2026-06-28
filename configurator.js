@@ -1,438 +1,163 @@
-/* ── SCS Carport Konfigurator JS ──────────────────────────────────────── */
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<script>(function(){var p="builditphase3",k="scs_auth";if(sessionStorage.getItem(k)!=="1"){var i=prompt("Password:");if(i!==p){document.body.innerHTML="<div style='font-family:sans-serif;text-align:center;padding:100px;font-size:18px;'>Incorrect password. Please refresh and try again.</div>";throw new Error("Auth");}sessionStorage.setItem(k,"1");}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konfigurator — SCS Carport</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="config-page">
 
-const PRICING = {
-  einzelcarport: {
-    base: 4833.84,
-    baseLabel: 'Einzelcarport',
-    size: {
-      standard: { label: 'Standard',  dim: '270 × 500 cm', desc: 'Für kompakte Stellplätze',      delta: 0 },
-      medium:   { label: 'Mittel',    dim: '350 × 550 cm', desc: 'Meistgewählte Größe',            delta: 420 },
-      large:    { label: 'Groß',      dim: '475 × 600 cm', desc: 'Für größere Fahrzeuge & SUVs',   delta: 890 },
-    },
-    roof: {
-      flat:    { label: 'Flachdach',  desc: '5° Neigung · klassisch & modern',       delta: 0,   img: 'flat.png' },
-      pitched: { label: 'Satteldach', desc: '20° Neigung · maximaler Wasserablauf',  delta: 380, img: 'pitched.png' },
-    },
-    covering: {
-      none:     { label: 'Ohne Eindeckung',          desc: 'Dachschalung aus Profilbrettern inklusive',        delta: 0 },
-      poly:     { label: 'Polycarbonat-Wellplatten', desc: 'Transparent · inkl. Dachrinnenset',                delta: 190 },
-      trapez:   { label: 'Trapezblech anthrazit',    desc: 'RAL 7016 · robust & wetterfest · inkl. Rinne',     delta: 290 },
-      sandwich: { label: 'Sandwichpaneel anthrazit', desc: 'Wärmedämmend · leise · Premium · inkl. Rinne',     delta: 640 },
-    },
-    cladding: {
-      none:  { label: 'Ohne Verkleidung', desc: 'Offen an allen Seiten',          delta: 0 },
-      one:   { label: '1 Seite',          desc: 'Sichtschutz an einer Seite',     delta: 310 },
-      two:   { label: '2 Seiten',         desc: 'Erhöhter Schutz links & rechts', delta: 590 },
-      three: { label: '3 Seiten',         desc: 'Maximal geschlossen',            delta: 840 },
-    },
-    addons: {
-      gutter: { label: 'Dachrinnenset zusätzlich', desc: 'Verzinktes Blech',       delta: 149 },
-      led:    { label: 'LED-Beleuchtung',           desc: '230V, IP44, warmweiß',   delta: 229 },
-      loft:   { label: 'Abstellboden',              desc: 'Lagerfläche im Dachraum',delta: 399 },
-    }
-  },
-  doppelcarport: {
-    base: 6357.59,
-    baseLabel: 'Doppelcarport',
-    size: {
-      standard: { label: 'Standard',  dim: '540 × 500 cm', desc: 'Platz für 2 Standardfahrzeuge', delta: 0 },
-      medium:   { label: 'Mittel',    dim: '590 × 550 cm', desc: 'Mehr Komfort beim Ein- & Aussteigen', delta: 560 },
-      large:    { label: 'Groß',      dim: '650 × 600 cm', desc: 'SUVs, Transporter & Komfort',    delta: 1180 },
-    },
-    roof: {
-      flat:    { label: 'Flachdach',  desc: '5° Neigung · klassisch & modern',       delta: 0,   img: 'flat.png' },
-      pitched: { label: 'Satteldach', desc: '20° Neigung · maximaler Wasserablauf',  delta: 520, img: 'pitched.png' },
-    },
-    covering: {
-      none:     { label: 'Ohne Eindeckung',          desc: 'Dachschalung aus Profilbrettern inklusive',        delta: 0 },
-      poly:     { label: 'Polycarbonat-Wellplatten', desc: 'Transparent · inkl. Dachrinnenset',                delta: 260 },
-      trapez:   { label: 'Trapezblech anthrazit',    desc: 'RAL 7016 · robust & wetterfest · inkl. Rinne',     delta: 390 },
-      sandwich: { label: 'Sandwichpaneel anthrazit', desc: 'Wärmedämmend · leise · Premium · inkl. Rinne',     delta: 850 },
-    },
-    cladding: {
-      none:  { label: 'Ohne Verkleidung', desc: 'Offen an allen Seiten',          delta: 0 },
-      one:   { label: '1 Seite',          desc: 'Sichtschutz an einer Seite',     delta: 420 },
-      two:   { label: '2 Seiten',         desc: 'Erhöhter Schutz links & rechts', delta: 790 },
-      three: { label: '3 Seiten',         desc: 'Maximal geschlossen',            delta: 1120 },
-    },
-    addons: {
-      gutter: { label: 'Dachrinnenset zusätzlich', desc: 'Verzinktes Blech',       delta: 189 },
-      led:    { label: 'LED-Beleuchtung',           desc: '230V, IP44, warmweiß',   delta: 289 },
-      loft:   { label: 'Abstellboden',              desc: 'Lagerfläche im Dachraum',delta: 499 },
-    }
-  }
-};
+<div class="top-bar">
+  <div class="top-bar-left">
+    <div class="top-bar-item">+49 8224 / 9660-100</div>
+    <div class="top-bar-item">Mo.–Fr. 07:00–17:00 Uhr</div>
+  </div>
+  <div class="top-bar-right"><a href="#">Impressum</a><a href="#">Datenschutz</a></div>
+</div>
 
-// Delivery zones by postcode prefix
-const DELIVERY_ZONES = {
-  '0': true,'1': true,'2': true,'3': true,'4': true,
-  '5': true,'6': true,'7': true,'8': true,'9': true,
-};
-const EXCLUDED_POSTCODES = ['99999','12345'];
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 10L12 3L21 10V20H15V14H9V20H3V10Z" fill="#fff"/></svg></div>
+      <div class="nav-logo-text"><div class="nav-logo-name">SCS Holzwerke</div><div class="nav-logo-sub">Carport Konfigurator</div></div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">← Startseite</a>
+      <a href="products.html">Meistgeliebte Carports</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.getElementById('mob').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile" id="mob">
+  <a href="index.html">Startseite</a>
+  <a href="products.html">Meistgeliebte Carports</a>
+</div>
 
-// State
-const state = {
-  type: 'einzelcarport',
-  size: 'standard',
-  roof: 'flat',
-  covering: 'none',
-  cladding: 'none',
-  addons: new Set(),
-};
+<!-- Progress bar -->
+<div class="config-progress">
+  <div class="config-progress-inner">
+    <div class="progress-step done"><div class="progress-dot">✓</div>Typ wählen</div>
+    <div class="progress-step active"><div class="progress-dot">2</div>Konfigurieren</div>
+    <div class="progress-step"><div class="progress-dot">3</div>Zusammenfassung</div>
+    <div class="progress-step"><div class="progress-dot">4</div>Bestellung</div>
+  </div>
+</div>
 
-// Helpers
-function fmt(n) {
-  return new Intl.NumberFormat('de-DE', { style:'currency', currency:'EUR', minimumFractionDigits: 2 }).format(n);
-}
-function fmtDelta(n) {
-  if (n === 0) return 'Inklusive';
-  return '+' + fmt(n);
-}
-function deliveryDate() {
-  const d = new Date();
-  d.setDate(d.getDate() + 28);
-  return d.toLocaleDateString('de-DE', { day:'numeric', month:'long', year:'numeric' });
-}
-function calcTotal() {
-  const p = PRICING[state.type];
-  let total = p.base;
-  total += p.size[state.size].delta;
-  total += p.roof[state.roof].delta;
-  total += p.covering[state.covering].delta;
-  total += p.cladding[state.cladding].delta;
-  for (const a of state.addons) total += p.addons[a].delta;
-  return total;
-}
+<!-- Type bar -->
+<div class="type-bar">
+  <div class="type-bar-inner">
+    <span class="type-label">Carport-Typ:</span>
+    <button class="type-btn active" data-type="einzelcarport">Einzelcarport</button>
+    <button class="type-btn" data-type="doppelcarport">Doppelcarport</button>
+    <div class="type-price-hint">Basispreis: <strong id="base-price-hint">4.833,84 €</strong> inkl. MwSt.</div>
+  </div>
+</div>
 
-// Render options
-function renderOptions() {
-  const p = PRICING[state.type];
+<!-- Config layout -->
+<div class="config-layout">
 
-  function radioSection(id, cat, current) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.innerHTML = Object.entries(p[cat]).map(([key, opt]) => {
-      const sel = current === key;
-      const deltaText = fmtDelta(opt.delta);
-      const deltaClass = opt.delta === 0 ? 'zero' : '';
-      const imgHtml = opt.img
-        ? `<div class="option-card-img"><img src="${opt.img}" alt="${opt.label}" onerror="this.parentElement.style.display='none'"></div>`
-        : opt.dim
-        ? `<div class="option-card-img"><div class="option-card-img-placeholder" style="display:flex;align-items:center;justify-content:center;height:100%;font-size:12px;color:var(--grey-mid);background:var(--grey-bg);">${opt.dim}</div></div>`
-        : '';
-      return `<div class="option-card${sel?' selected':''}" data-cat="${cat}" data-key="${key}">
-        <div class="option-check"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        ${imgHtml}
-        <div class="option-card-name">${opt.label}</div>
-        ${opt.dim ? `<div class="option-card-desc">${opt.dim}</div>` : ''}
-        <div class="option-card-desc">${opt.desc}</div>
-        <div class="option-card-delta ${deltaClass}">${deltaText}</div>
-      </div>`;
-    }).join('');
-  }
+  <!-- Left: options -->
+  <div>
 
-  radioSection('options-size',     'size',     state.size);
-  radioSection('options-roof',     'roof',     state.roof);
-  radioSection('options-covering', 'covering', state.covering);
-  radioSection('options-cladding', 'cladding', state.cladding);
-
-  const addonsEl = document.getElementById('options-addons');
-  if (addonsEl) {
-    const p2 = PRICING[state.type];
-    addonsEl.innerHTML = Object.entries(p2.addons).map(([key, opt]) => {
-      const sel = state.addons.has(key);
-      return `<div class="addon-card${sel?' selected':''}" data-addon="${key}">
-        <div class="addon-check"><svg viewBox="0 0 12 12" fill="none" width="12" height="12"><polyline points="2,6 5,9 10,3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div class="addon-info">
-          <div class="addon-name">${opt.label}</div>
-          <div class="addon-desc">${opt.desc}</div>
-          <div class="addon-delta">${fmtDelta(opt.delta)}</div>
-        </div>
-      </div>`;
-    }).join('');
-  }
-}
-
-// Render sidebar
-let prevTotal = null;
-function renderSidebar() {
-  const p = PRICING[state.type];
-  const total = calcTotal();
-
-  // type badge
-  const badge = document.getElementById('sidebar-type-badge');
-  if (badge) badge.textContent = p.baseLabel;
-
-  // base price hint
-  const hint = document.getElementById('base-price-hint');
-  if (hint) hint.textContent = fmt(p.base);
-
-  // rows
-  const rows = [
-    { cat:'Basis', name: p.baseLabel, price: p.base, isBase: true },
-    { cat:'Größe',          name: p.size[state.size].label,         price: p.size[state.size].delta },
-    { cat:'Dachform',       name: p.roof[state.roof].label,         price: p.roof[state.roof].delta },
-    { cat:'Dacheindeckung', name: p.covering[state.covering].label, price: p.covering[state.covering].delta },
-    { cat:'Verkleidung',    name: p.cladding[state.cladding].label, price: p.cladding[state.cladding].delta },
-  ];
-  for (const a of state.addons) {
-    rows.push({ cat:'Zubehör', name: p.addons[a].label, price: p.addons[a].delta });
-  }
-
-  const rowsEl = document.getElementById('sidebar-rows');
-  if (rowsEl) {
-    rowsEl.innerHTML = rows.map(r => {
-      const cls = r.isBase ? 'base' : r.price === 0 ? 'zero' : 'positive';
-      const txt = r.isBase ? fmt(r.price) : r.price === 0 ? 'Inklusive' : '+' + fmt(r.price);
-      return `<div class="sidebar-row">
-        <div><div class="sidebar-row-cat">${r.cat}</div><div class="sidebar-row-name">${r.name}</div></div>
-        <div class="sidebar-row-price ${cls}">${txt}</div>
-      </div>`;
-    }).join('');
-  }
-
-  // total + flash
-  const totalEl = document.getElementById('sidebar-total-amount');
-  if (totalEl) {
-    const newVal = fmt(total);
-    if (prevTotal !== null && prevTotal !== total) {
-      const diff = total - prevTotal;
-      totalEl.classList.remove('flash');
-      void totalEl.offsetWidth;
-      totalEl.classList.add('flash');
-      setTimeout(() => totalEl.classList.remove('flash'), 550);
-      // delta toast
-      const toast = document.getElementById('sidebar-delta-toast');
-      if (toast) {
-        toast.textContent = (diff > 0 ? '+' : '') + fmt(diff);
-        toast.style.color = diff > 0 ? 'var(--price-green)' : 'var(--red)';
-        toast.style.opacity = '1';
-        setTimeout(() => { toast.style.opacity = '0'; }, 1800);
-      }
-    }
-    totalEl.textContent = newVal;
-    prevTotal = total;
-  }
-
-  // delivery date
-  const dd = document.getElementById('sidebar-delivery-date');
-  if (dd) dd.textContent = deliveryDate();
-
-  // update preview image
-  const previewImg = document.getElementById('preview-img');
-  const previewLabel = document.getElementById('preview-label');
-  if (previewImg) {
-    const roofData = PRICING[state.type].roof[state.roof];
-    if (roofData.img) previewImg.src = roofData.img;
-  }
-  if (previewLabel) {
-    previewLabel.textContent = `${p.baseLabel} · ${p.roof[state.roof].label}`;
-  }
-}
-
-// Events
-function initEvents() {
-  document.querySelectorAll('.type-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      state.type = btn.dataset.type;
-      state.addons.clear();
-      document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderOptions();
-      renderSidebar();
-    });
-  });
-
-  document.addEventListener('click', e => {
-    const card = e.target.closest('.option-card');
-    if (card) {
-      const cat = card.dataset.cat;
-      const key = card.dataset.key;
-      state[cat] = key;
-      renderOptions();
-      renderSidebar();
-      return;
-    }
-    const addon = e.target.closest('.addon-card');
-    if (addon) {
-      const key = addon.dataset.addon;
-      state.addons.has(key) ? state.addons.delete(key) : state.addons.add(key);
-      renderOptions();
-      renderSidebar();
-    }
-  });
-
-  const toSummary = document.getElementById('to-summary');
-  if (toSummary) {
-    toSummary.addEventListener('click', () => {
-      saveState();
-      window.location.href = 'summary.html';
-    });
-  }
-}
-
-// Session storage
-function saveState() {
-  sessionStorage.setItem('scs_config', JSON.stringify({
-    type: state.type, size: state.size, roof: state.roof,
-    covering: state.covering, cladding: state.cladding,
-    addons: [...state.addons],
-  }));
-}
-function loadState() {
-  const raw = sessionStorage.getItem('scs_config');
-  if (!raw) return false;
-  try {
-    const s = JSON.parse(raw);
-    state.type     = s.type     || 'einzelcarport';
-    state.size     = s.size     || 'standard';
-    state.roof     = s.roof     || 'flat';
-    state.covering = s.covering || 'none';
-    state.cladding = s.cladding || 'none';
-    state.addons   = new Set(s.addons || []);
-    // sync type buttons
-    document.querySelectorAll('.type-btn').forEach(b => {
-      b.classList.toggle('active', b.dataset.type === state.type);
-    });
-    return true;
-  } catch { return false; }
-}
-
-// ── Summary page ─────────────────────────────────────────────────────────
-function renderSummary() {
-  const p = PRICING[state.type];
-  const total = calcTotal();
-  const el = document.getElementById('summary-content');
-  if (!el) return;
-
-  const rows = [
-    { cat:'Typ',            name: p.baseLabel,                              price: p.base,                             isBase: true },
-    { cat:'Größe',          name: p.size[state.size].label,                 price: p.size[state.size].delta },
-    { cat:'Dachform',       name: p.roof[state.roof].label,                 price: p.roof[state.roof].delta },
-    { cat:'Dacheindeckung', name: p.covering[state.covering].label,         price: p.covering[state.covering].delta },
-    { cat:'Verkleidung',    name: p.cladding[state.cladding].label,         price: p.cladding[state.cladding].delta },
-  ];
-  for (const a of state.addons) {
-    rows.push({ cat:'Zubehör', name: p.addons[a].label, price: p.addons[a].delta });
-  }
-
-  el.innerHTML = `
-    <div class="summary-card">
-      <div class="summary-card-head">Ihre Konfiguration</div>
-      ${rows.map(r => {
-        const cls = r.isBase ? '' : r.price === 0 ? ' zero' : ' positive';
-        const txt = r.isBase ? fmt(r.price) : r.price === 0 ? 'Inklusive' : '+' + fmt(r.price);
-        return `<div class="summary-item">
-          <span class="summary-item-label">${r.cat}</span>
-          <span class="summary-item-value">${r.name}</span>
-          <span class="summary-item-price${cls}">${txt}</span>
-        </div>`;
-      }).join('')}
+    <!-- Preview image -->
+    <div class="config-preview" id="config-preview">
+      <img id="preview-img" src="flat.png" alt="Carport Vorschau">
+      <div class="config-preview-label" id="preview-label">Einzelcarport · Flachdach</div>
     </div>
 
-    <div class="summary-total-card">
-      <div class="summary-total-label">Gesamtpreis inkl. 19% MwSt.</div>
-      <div class="summary-total-amount">${fmt(total)}</div>
-      <div class="summary-total-sub">Kostenlose Lieferung · Statik-Nachweis · Montageanleitungen inklusive · Lieferung ca. ${deliveryDate()}</div>
-    </div>
-
-    <div class="delivery-checker">
-      <h3>🚚 Lieferung in Ihre Region prüfen</h3>
-      <p>Geben Sie Ihre Postleitzahl ein, um zu prüfen, ob wir in Ihre Region liefern.</p>
-      <div class="delivery-input-row">
-        <input class="delivery-input" id="plz-input" type="text" maxlength="5" placeholder="z.B. 80331" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
-        <button class="btn btn-primary" onclick="checkDelivery()">Prüfen</button>
+    <!-- 1. Size -->
+    <div class="config-section">
+      <div class="config-section-head">
+        <div class="config-section-num">1</div>
+        <div class="config-section-title">Größe</div>
+        <div class="config-section-desc">Breite × Tiefe</div>
       </div>
-      <div class="delivery-result" id="delivery-result"></div>
+      <div class="options-grid" id="options-size"></div>
     </div>
 
-    <div class="inquiry-form">
-      <h3>Unverbindliche Anfrage senden</h3>
-      <div class="form-grid">
-        <div class="form-group">
-          <label class="form-label">Vorname <span class="req">*</span></label>
-          <input class="form-input" type="text" placeholder="Max">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Nachname <span class="req">*</span></label>
-          <input class="form-input" type="text" placeholder="Mustermann">
-        </div>
-        <div class="form-group">
-          <label class="form-label">E-Mail <span class="req">*</span></label>
-          <input class="form-input" type="email" placeholder="max@beispiel.de">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Telefon (optional)</label>
-          <input class="form-input" type="tel" placeholder="+49 ...">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Postleitzahl <span class="req">*</span></label>
-          <input class="form-input" type="text" maxlength="5" placeholder="80331">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Wunschtermin (optional)</label>
-          <input class="form-input" type="date">
-        </div>
-        <div class="form-group full">
-          <label class="form-label">Anmerkungen (optional)</label>
-          <textarea class="form-textarea" placeholder="Besondere Anforderungen, Grundstückshinweise, Fragen zur Statik ..."></textarea>
-        </div>
+    <!-- 2. Roof -->
+    <div class="config-section">
+      <div class="config-section-head">
+        <div class="config-section-num">2</div>
+        <div class="config-section-title">Dachform</div>
+        <div class="config-section-desc">Neigung & Stil</div>
       </div>
-      <button class="btn btn-primary btn-lg" style="margin-top:12px" onclick="submitInquiry()">
-        Anfrage absenden
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div class="form-hint" style="margin-top:10px;">* Pflichtfelder · Ihre Daten werden nicht an Dritte weitergegeben.</div>
+      <div class="options-grid options-grid-wide" id="options-roof"></div>
     </div>
 
-    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px;">
-      <button class="btn btn-primary btn-lg" onclick="window.location.href='order.html'">
-        Zur Bestellung
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <a href="configurator.html" class="btn btn-ghost">← Konfiguration ändern</a>
+    <!-- 3. Covering -->
+    <div class="config-section">
+      <div class="config-section-head">
+        <div class="config-section-num">3</div>
+        <div class="config-section-title">Dacheindeckung</div>
+        <div class="config-section-desc">Material & Optik</div>
+      </div>
+      <div class="options-grid options-grid-wide" id="options-covering"></div>
     </div>
-  `;
-}
 
-function checkDelivery() {
-  const plz = document.getElementById('plz-input').value.trim();
-  const result = document.getElementById('delivery-result');
-  if (!result) return;
-  result.className = 'delivery-result';
+    <!-- 4. Cladding -->
+    <div class="config-section">
+      <div class="config-section-head">
+        <div class="config-section-num">4</div>
+        <div class="config-section-title">Seitenverkleidung</div>
+        <div class="config-section-desc">Sichtschutz</div>
+      </div>
+      <div class="options-grid" id="options-cladding"></div>
+    </div>
 
-  if (plz.length !== 5) {
-    result.textContent = 'Bitte geben Sie eine gültige 5-stellige Postleitzahl ein.';
-    result.classList.add('error');
-    return;
-  }
-  if (EXCLUDED_POSTCODES.includes(plz)) {
-    result.innerHTML = '❌ Leider liefern wir nicht in diese Postleitzahl. Bitte kontaktieren Sie uns für eine individuelle Lösung.';
-    result.classList.add('error');
-    return;
-  }
-  if (DELIVERY_ZONES[plz[0]]) {
-    result.innerHTML = `✅ Super! Wir liefern nach <strong>${plz}</strong>. Lieferung ca. ${deliveryDate()} · kostenlos.`;
-    result.classList.add('success');
-  } else {
-    result.innerHTML = '❌ In diese Region liefern wir leider nicht. Kontaktieren Sie uns für eine individuelle Lösung.';
-    result.classList.add('error');
-  }
-}
+    <!-- 5. Add-ons -->
+    <div class="config-section">
+      <div class="config-section-head">
+        <div class="config-section-num">5</div>
+        <div class="config-section-title">Zubehör</div>
+        <div class="config-section-desc">Optional · mehrere wählbar</div>
+      </div>
+      <div class="addon-grid" id="options-addons"></div>
+    </div>
 
-function submitInquiry() {
-  alert('Vielen Dank für Ihre Anfrage!\n\nWir melden uns innerhalb von 24 Stunden bei Ihnen.\n\n(Demo-Funktion — keine echte Übermittlung)');
-}
+  </div>
 
-// ── Init ──────────────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-  if (document.getElementById('summary-content')) {
-    loadState();
-    renderSummary();
-    return;
-  }
-  loadState();
-  renderOptions();
-  renderSidebar();
-  initEvents();
-});
+  <!-- Right: price sidebar -->
+  <aside class="price-sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-head-title">Ihre Konfiguration</div>
+      <div class="sidebar-type-badge" id="sidebar-type-badge">Einzelcarport</div>
+    </div>
+    <div class="sidebar-rows" id="sidebar-rows"></div>
+    <div class="sidebar-total">
+      <div class="sidebar-total-label">Gesamtpreis inkl. 19% MwSt.</div>
+      <div class="sidebar-total-amount" id="sidebar-total-amount"></div>
+      <div class="sidebar-delta-toast" id="sidebar-delta-toast"></div>
+      <div class="sidebar-vat">Kostenlose Lieferung · Statik-Nachweis inklusive</div>
+    </div>
+    <div class="sidebar-delivery">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,8 6,12 14,4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Lieferung ca. <span id="sidebar-delivery-date" style="margin-left:4px;font-weight:700;"></span>
+    </div>
+    <div class="sidebar-actions">
+      <button class="btn btn-primary btn-full" id="to-summary">
+        Zur Zusammenfassung
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <a href="products.html" class="btn btn-ghost btn-full" style="font-size:13px;">Fertige Konfigurationen ansehen</a>
+    </div>
+    <div class="sidebar-note">Unverbindliche Preisschätzung. Endpreis nach Aufmaß und Liefergebiet.</div>
+  </aside>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="nav-logo-icon" style="width:36px;height:36px;"><svg viewBox="0 0 24 24" fill="none"><path d="M3 10L12 3L21 10V20H15V14H9V20H3V10Z" fill="#fff"/></svg></div>
+      <div class="nav-logo-text"><div class="nav-logo-name" style="color:#fff;">SCS Holzwerke</div><div class="nav-logo-sub">Carport Konfigurator</div></div>
+    </div>
+    <div class="footer-copy">© 2025 SCS Holzwerke GmbH & Co. KG · Studienprojekt TH Rosenheim</div>
+  </div>
+</footer>
+
+<script src="configurator.js"></script>
+</body>
+</html>
