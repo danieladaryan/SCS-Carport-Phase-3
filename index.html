@@ -1,30 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<script>
-(function(){
-  if(localStorage.getItem("scs_ok")==="1") return;
-  document.write('<style>body{display:none!important}</style>');
-  window.addEventListener("load", function(){
-    var d = document.createElement("div");
-    d.style.cssText = "position:fixed;inset:0;background:#F8F8F6;z-index:99999;display:flex;align-items:center;justify-content:center;font-family:system-ui,sans-serif;";
-    d.innerHTML = '<div style="background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.12);padding:48px 40px;width:360px;text-align:center;"><div style="width:52px;height:52px;background:#F5C800;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:16px;">&#127968;</div><h2 style="font-size:20px;font-weight:700;color:#1A1A18;margin:0 0 6px;">SCS Carport Konfigurator</h2><p style="font-size:13px;color:#7A7670;margin:0 0 24px;">Enter password to continue.</p><input id="pw" type="password" placeholder="Password" style="width:100%;border:1.5px solid #E4E1DB;border-radius:8px;padding:11px 14px;font-size:15px;text-align:center;outline:none;margin-bottom:12px;box-sizing:border-box;" autofocus><button onclick="chk()" style="width:100%;background:#F5C800;color:#1A1A18;border:none;border-radius:8px;padding:12px;font-size:15px;font-weight:700;cursor:pointer;">Continue &#8594;</button><div id="pe" style="color:#c0392b;font-size:12px;margin-top:10px;display:none;">Incorrect password.</div></div>';
-    document.body.style.display = "";
-    document.body.appendChild(d);
-    document.getElementById("pw").addEventListener("keydown", function(e){ if(e.key==="Enter") chk(); });
-    window.chk = function(){
-      if(document.getElementById("pw").value==="builditphase3"){
-        localStorage.setItem("scs_ok","1");
-        d.remove();
-      } else {
-        document.getElementById("pe").style.display="block";
-        document.getElementById("pw").value="";
-      }
-    };
-  });
-})();
-</script>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SCS Carport Konfigurator — Holzcarports nach Maß</title>
   <link rel="stylesheet" href="style.css">
@@ -329,20 +306,5 @@
   </div>
 </footer>
 
-<script>
-// Delivery date: ~4 weeks from today
-function deliveryDate() {
-  const d = new Date();
-  d.setDate(d.getDate() + 28);
-  return d.toLocaleDateString('de-DE', { day:'numeric', month:'long', year:'numeric' });
-}
-document.getElementById('delivery-einzelcarport').textContent = deliveryDate();
-document.getElementById('delivery-doppelcarport').textContent = deliveryDate();
-
-// Pre-select type from URL
-const params = new URLSearchParams(window.location.search);
-const t = params.get('type');
-if (t) sessionStorage.setItem('scs_config', JSON.stringify({ type: t, size:'standard', roof:'flat', covering:'none', cladding:'none', addons:[] }));
-</script>
 </body>
 </html>
