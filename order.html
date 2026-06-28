@@ -128,54 +128,5 @@
 </footer>
 
 <script src="configurator.js"></script>
-<script>
-function submitOrder() {
-  const fname = document.getElementById('fname').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const plz = document.getElementById('plz').value.trim();
-  const street = document.getElementById('street').value.trim();
-
-  if (!fname || !email || !plz || !street) {
-    alert('Bitte füllen Sie alle Pflichtfelder aus.');
-    return;
-  }
-
-  document.querySelector('.summary-wrap').innerHTML = `
-    <div style="text-align:center;padding:80px 0;">
-      <div style="font-size:64px;margin-bottom:24px;">✅</div>
-      <h1 style="font-size:32px;font-weight:700;margin-bottom:12px;">Vielen Dank für Ihre Bestellung!</h1>
-      <p style="font-size:16px;color:var(--grey-mid);max-width:480px;margin:0 auto 32px;">Wir haben Ihren Bestellwunsch erhalten und melden uns innerhalb von <strong>24 Stunden</strong> mit einer Auftragsbestätigung an <strong>${email}</strong>.</p>
-      <div style="background:#fffbe6;border:1px solid var(--yellow);border-radius:var(--radius-lg);padding:20px 28px;display:inline-block;text-align:left;margin-bottom:32px;">
-        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--grey-mid);margin-bottom:8px;">Ihre Bestellnummer</div>
-        <div style="font-size:24px;font-weight:800;color:var(--black);">#SCS-${Math.floor(100000 + Math.random() * 900000)}</div>
-      </div>
-      <div><a href="index.html" class="btn btn-primary">Zurück zur Startseite</a></div>
-    </div>
-  `;
-}
-
-// Show mini order summary
-document.addEventListener('DOMContentLoaded', () => {
-  const raw = sessionStorage.getItem('scs_config');
-  const el = document.getElementById('order-summary-mini');
-  if (!raw || !el) return;
-  try {
-    const s = JSON.parse(raw);
-    const p = PRICING[s.type || 'einzelcarport'];
-    let total = p.base;
-    total += (p.size[s.size]?.delta || 0);
-    total += (p.roof[s.roof]?.delta || 0);
-    total += (p.covering[s.covering]?.delta || 0);
-    total += (p.cladding[s.cladding]?.delta || 0);
-    (s.addons || []).forEach(a => { total += (p.addons[a]?.delta || 0); });
-    const fmtNum = n => new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(n);
-    el.innerHTML = `
-      <div style="background:var(--off-white);border:1px solid var(--grey-light);border-radius:var(--radius-lg);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-        <div style="font-size:14px;color:var(--grey-mid);">Ihre Konfiguration: <strong style="color:var(--black);">${p.baseLabel} · ${p.roof[s.roof]?.label || ''} · ${p.covering[s.covering]?.label || ''}</strong></div>
-        <div style="font-size:20px;font-weight:800;color:var(--black);">${fmtNum(total)} <span style="font-size:12px;font-weight:400;color:var(--grey-mid);">inkl. MwSt.</span></div>
-      </div>`;
-  } catch(e) {}
-});
-</script>
 </body>
 </html>
