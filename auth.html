@@ -78,13 +78,13 @@
     <div class="error" id="err">Falsches Passwort. Bitte versuchen Sie es erneut.</div>
   </div>
   <script>
-    if (sessionStorage.getItem('scs_auth') === '1') {
+    if (localStorage.getItem('scs_auth') === '1') {
       window.location.href = 'index.html';
     }
     function check() {
       const val = document.getElementById('pw').value;
       if (val === 'builditphase3') {
-        sessionStorage.setItem('scs_auth', '1');
+        localStorage.setItem('scs_auth', '1');
         window.location.href = 'index.html';
       } else {
         document.getElementById('err').style.display = 'block';
