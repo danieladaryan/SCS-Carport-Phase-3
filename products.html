@@ -79,6 +79,12 @@
         <label class="filter-option"><input type="checkbox" checked> <label>Satteldach</label></label>
       </div>
       <hr class="filter-divider">
+      <div class="filter-group">
+        <div class="filter-group-label">Preisbereich</div>
+        <input type="range" min="4000" max="12000" value="12000" style="width:100%;accent-color:var(--yellow-dk)" oninput="document.getElementById('price-max').textContent=Number(this.value).toLocaleString('de-DE')+'€'">
+        <div class="price-range-labels"><span>4.000 €</span><span>bis <strong id="price-max">12.000€</strong></span></div>
+      </div>
+      <hr class="filter-divider">
       <a href="configurator.html" class="btn btn-primary btn-full" style="margin-top:4px">Eigene Konfiguration →</a>
     </aside>
 
