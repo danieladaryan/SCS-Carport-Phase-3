@@ -5,7 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zusammenfassung — SCS Carport</title>
   <link rel="stylesheet" href="style.css">
-<script>if(localStorage.getItem("scs_auth")!=="1"){window.location.href="auth.html";}</script>
+<script>
+(function(){
+  if(localStorage.getItem("scs_auth2")==="1") return;
+  var ov = document.createElement("div");
+  ov.id = "scs-pw-overlay";
+  ov.style.cssText = "position:fixed;inset:0;background:#F8F8F6;z-index:99999;display:flex;align-items:center;justify-content:center;font-family:system-ui,sans-serif;";
+  ov.innerHTML = '<div style="background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.12);padding:48px 40px;width:100%;max-width:400px;text-align:center;"><div style="width:52px;height:52px;background:#F5C800;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 16px;">🏠</div><h2 style="font-size:20px;font-weight:700;color:#1A1A18;margin-bottom:6px;">SCS Carport Konfigurator</h2><p style="font-size:13px;color:#7A7670;margin-bottom:24px;">Please enter the password to continue.</p><input id="scs-pw-input" type="password" placeholder="Password" style="width:100%;border:1.5px solid #E4E1DB;border-radius:8px;padding:11px 14px;font-size:15px;text-align:center;letter-spacing:0.08em;outline:none;margin-bottom:12px;" /><button id="scs-pw-btn" style="width:100%;background:#F5C800;color:#1A1A18;border:none;border-radius:8px;padding:12px;font-size:15px;font-weight:700;cursor:pointer;">Continue →</button><div id="scs-pw-err" style="color:#c0392b;font-size:12px;margin-top:10px;display:none;">Incorrect password. Please try again.</div></div>';
+  document.addEventListener("DOMContentLoaded", function(){
+    document.body.appendChild(ov);
+    var inp = document.getElementById("scs-pw-input");
+    var btn = document.getElementById("scs-pw-btn");
+    var err = document.getElementById("scs-pw-err");
+    inp.focus();
+    function check(){
+      if(inp.value==="builditphase3"){
+        localStorage.setItem("scs_auth2","1");
+        document.getElementById("scs-pw-overlay").remove();
+      } else {
+        err.style.display="block";
+        inp.value="";
+        inp.focus();
+      }
+    }
+    btn.addEventListener("click",check);
+    inp.addEventListener("keydown",function(e){if(e.key==="Enter")check();});
+  });
+})();
+</script>
+
 </head>
 <body>
 
