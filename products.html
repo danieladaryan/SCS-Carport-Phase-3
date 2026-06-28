@@ -148,12 +148,6 @@
           </div>
         </div>
       </div>
-      <div class="listing-card-reviews listing-card">
-        <div class="mini-reviews-title">Kundenbewertungen zu dieser Konfiguration</div>
-        <div class="mini-review">
-          <div class="mini-review-header"><span class="mini-review-stars">★★★★★</span><span class="mini-review-name">Michael K.</span><span class="mini-review-date">vor 2 Wochen</span></div>
-          <div class="mini-review-text">"Genau das, was ich gesucht habe. Schlicht, stabil, gutes Preis-Leistungs-Verhältnis. Aufbau war einfacher als gedacht."</div>
-        </div>
         <div class="mini-review">
           <div class="mini-review-header"><span class="mini-review-stars">★★★★★</span><span class="mini-review-name">Anna F.</span><span class="mini-review-date">vor 1 Monat</span></div>
           <div class="mini-review-text">"Holzqualität ist wirklich top. Der Konfigurator hat mir geholfen, die Kosten im Blick zu behalten — ich wusste bei jedem Klick, was es kostet."</div>
@@ -198,12 +192,6 @@
           </div>
         </div>
       </div>
-      <div class="listing-card-reviews listing-card">
-        <div class="mini-reviews-title">Kundenbewertungen zu dieser Konfiguration</div>
-        <div class="mini-review">
-          <div class="mini-review-header"><span class="mini-review-stars">★★★★★</span><span class="mini-review-name">Thomas H.</span><span class="mini-review-date">vor 3 Wochen</span></div>
-          <div class="mini-review-text">"Das Satteldach war die richtige Entscheidung — kein Wasser staut sich, und die Sandwichpaneele halten wirklich warm. Absolut empfehlenswert."</div>
-        </div>
         <div class="mini-review">
           <div class="mini-review-header"><span class="mini-review-stars">★★★★☆</span><span class="mini-review-name">Julia M.</span><span class="mini-review-date">vor 2 Monaten</span></div>
           <div class="mini-review-text">"Sehr gute Qualität. Die Verkleidung an 2 Seiten war genau richtig für unsere Situation. Einen Stern Abzug wegen der Lieferzeit, die sich leicht verzögert hat."</div>
@@ -248,12 +236,6 @@
           </div>
         </div>
       </div>
-      <div class="listing-card-reviews listing-card">
-        <div class="mini-reviews-title">Kundenbewertungen zu dieser Konfiguration</div>
-        <div class="mini-review">
-          <div class="mini-review-header"><span class="mini-review-stars">★★★★★</span><span class="mini-review-name">Sandra B.</span><span class="mini-review-date">vor 1 Monat</span></div>
-          <div class="mini-review-text">"Perfekt für zwei Autos. Das Trapezblech sieht super aus und ist pflegeleicht. Die einseitige Verkleidung gibt genau den richtigen Sichtschutz zur Straße."</div>
-        </div>
         <div class="mini-review">
           <div class="mini-review-header"><span class="mini-review-stars">★★★★★</span><span class="mini-review-name">Klaus W.</span><span class="mini-review-date">vor 6 Wochen</span></div>
           <div class="mini-review-text">"Sehr solide Konstruktion. Mein Nachbar hat auch einen SCS Carport und der steht schon 5 Jahre einwandfrei. Daran hat man sich orientiert."</div>
@@ -299,12 +281,6 @@
           </div>
         </div>
       </div>
-      <div class="listing-card-reviews listing-card">
-        <div class="mini-reviews-title">Kundenbewertungen zu dieser Konfiguration</div>
-        <div class="mini-review">
-          <div class="mini-review-header"><span class="mini-review-stars">★★★★★</span><span class="mini-review-name">Ralf N.</span><span class="mini-review-date">vor 2 Monaten</span></div>
-          <div class="mini-review-text">"Das ist kein Carport mehr, das ist eine kleine Garage. Drei Seiten verkleidet, Sandwichpaneele — im Winter ist es da drinnen deutlich wärmer als draußen."</div>
-        </div>
         <div class="mini-review">
           <div class="mini-review-header"><span class="mini-review-stars">★★★★★</span><span class="mini-review-name">Petra M.</span><span class="mini-review-date">vor 3 Monaten</span></div>
           <div class="mini-review-text">"Teuer, aber jeden Cent wert. Die LED-Beleuchtung war die beste Entscheidung — abends sieht der Carport fantastisch aus."</div>
@@ -346,5 +322,19 @@
   </div>
 </footer>
 
+</body>
+</html><script>
+function deliveryDate() {
+  const d = new Date();
+  d.setDate(d.getDate() + 28);
+  return d.toLocaleDateString('de-DE', { day:'numeric', month:'long', year:'numeric' });
+}
+document.querySelectorAll('.delivery-date').forEach(el => el.textContent = deliveryDate());
+
+function selectConfig(type, size, roof, covering, cladding, addons) {
+  sessionStorage.setItem('scs_config', JSON.stringify({ type, size, roof, covering, cladding, addons }));
+  window.location.href = 'summary.html';
+}
+</script>
 </body>
 </html>
